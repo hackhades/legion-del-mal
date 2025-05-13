@@ -19,6 +19,13 @@
 | **DRP_excedentes**   | `[(PF-PC)/(PF+PC)] × 100`                                              | Proporción de dominio de puntos            |
 | **DRP Híbrida**      | `√(DRP_base × DRP_excedentes)`                                         | Combinación equilibrada de rendimiento     |
 
+# 📌 Definición de DRP en Dominó (Fórmulas y Significado)
+
+## 🔎 **¿Qué es DRP?**
+**DRP** = *Diferencia Relativa de Puntos*  
+Métrica que mide **eficiencia en el manejo de puntos** (no solo victorias). Existen dos tipos:
+
+
 ## ⚖️ Criterios de Desempate (Orden de Prioridad)
 1. **Partidas Ganadas (PG)**.  
 2. **Efectividad (Eff)**.  
