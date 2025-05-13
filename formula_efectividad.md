@@ -23,7 +23,8 @@
 
 ## 🔎 **¿Qué es DRP?**
 **DRP** = *Diferencia Relativa de Puntos*  
-Métrica que mide **eficiencia en el manejo de puntos** (no solo victorias). Existen dos tipos:
+Métrica que mide **eficiencia en el manejo de puntos** 
+
 **símbolo Σ** = *Sigma* , suma lineal   
  
 
