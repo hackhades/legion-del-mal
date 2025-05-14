@@ -17,7 +17,21 @@
 | **Efectividad (Eff)** | `Eff = 0.7×Win_Rate + 0.3×DRP_Híbrida` | Combina victorias y dominio de puntos.        |
 | **DRP_base**         | `[(PF-PC)/(Puntaje_Partida×PJ)] × 100`                                 | Rendimiento base normalizado               |
 | **DRP_excedentes**   | `[(PF-PC)/(PF+PC)] × 100`                                              | Proporción de dominio de puntos            |
-| **DRP Híbrida**      | `√(DRP_base × DRP_excedentes)`                                         | Combinación equilibrada de rendimiento     |
+| **multiplicacion**   | `(DRP_base × DRP_excedentes)`                            | Para que siempre de positivo    |
+| **DRP Híbrida**      | `√multiplicacion`                                         | Combinación equilibrada de rendimiento     |
+
+# Paso 2: Versión corregida con condicionales
+    Si PF == 0:  # Caso zapato
+        Eff = 0.7×Win_Rate + 1 ×DRP_Híbrida
+    Si no:
+        Eff = 0.7×Win_Rate + 0.3×DRP_Híbrida
+
+# Paso 3: Versión derrota
+    Si PF < PC  
+        -DRP_Híbrida
+        Eff = 0.7×Win_Rate + 0.3×DRP_Híbrida_negativa # efectividad negativa
+
+
 
 # 📌 Definición de DRP en Dominó (Fórmulas y Significado)
 
@@ -54,4 +68,3 @@ Métrica que mide **eficiencia en el manejo de puntos**
 
 ## ⚠️ Restricciones Absolutas
 - **Prohibido** repetir enfrentamientos entre las mismas 4 personas (ej: A+B vs C+D solo una vez)
-- **Bye automático**: Jugador con menor puntaje recibe puntos sin jugar si hay número impar
