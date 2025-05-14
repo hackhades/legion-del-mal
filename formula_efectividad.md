@@ -20,16 +20,16 @@
 | **multiplicacion**   | `(DRP_base × DRP_excedentes)`                            | Para que siempre de positivo    |
 | **DRP Híbrida**      | `√multiplicacion`                                         | Combinación equilibrada de rendimiento     |
 
-# Paso 2: Versión corregida con condicionales
-    Si PF == 0:  # _Caso zapato_
+# Paso 2: Versión Caso zapato
+    Si PF == 0:  
         Eff = 0.7×Win_Rate + 1 ×DRP_Híbrida
     Si no:
         Eff = 0.7×Win_Rate + 0.3×DRP_Híbrida
 
-# Paso 3: Versión derrota
+# Paso 3: Escenario Efectividad Negativa
     Si PF < PC  
         -DRP_Híbrida
-        Eff = 0.7×Win_Rate + 0.3×DRP_Híbrida_negativa # _Efectividad Negativa_
+        Eff = 0.7×Win_Rate + 0.3×DRP_Híbrida_negativa 
 
 
 
