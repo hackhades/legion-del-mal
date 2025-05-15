@@ -102,7 +102,7 @@ ELO = ELO + K * (S - E_eq) + Bono_Aplastante
 | Factor K (intermedios)| 20 (1600-2000 ELO)                      |
 | Factor K (élite)      | 15 (>2000 ELO)                          |
 | Factor K (gran maestro)| 10 (>2200 ELO)                          |
-| Penalización abandono | -7 ELO                                  |
+| Penalización abandono | -10 ELO                                  |
 | Bono aplastante       | +1/+2/+3 ELO (según brecha)             |
 
 ---
