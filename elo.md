@@ -10,7 +10,7 @@ ELO_pareja = (elo_jugador_A + elo_jugador_B) / 2
 ### 2. **Probabilidad Esperada de Victoria**
 \[
 E_eq = 1 / (1 + 10^((R_rival - R_propio) / 400))
-
+\]
 function calcularExpectativa(ELO_rivalPar, ELO_propioPar) {
   let exponente = (ELO_rivalPar - ELO_propioPar) / 400;
 
@@ -29,7 +29,7 @@ function calcularExpectativa(ELO_rivalPar, ELO_propioPar) {
   
   return E_eq;
 }
-\]
+
 
 ### 3. **Actualización del ELO Individual**
 \[
@@ -67,7 +67,11 @@ ELO = ELO + K * (S - E_eq) + Bono_Aplastante
 - **Decaimiento mensual**:  
   \[
     ELO = ELO * 0.98 (-2% por mes)  \]
-  - Ejemplo: 2000 ELO → 1960 tras 1 año.  
+
+  - Ejemplo 1: 2000 ELO → 1960 tras 1 mes. 
+  - Ejemplo 2: 2000 ELO → 1569 tras 1 año. 
+  - Valor_Final = Valor_Inicial * (1 - Tasa_Descuento)^Número_de_Periodos 
+  - Valor_Final = 2000 * (1 - 0.02)^12 
 
 ---
 
@@ -101,13 +105,15 @@ ELO = ELO + K * (S - E_eq) + Bono_Aplastante
 ## 📝 **Ejemplo Integral**
 **Partida a 100 puntos**:  
 - **Equipo A** (1700 ELO promedio) vs **Equipo B** (1800 ELO promedio).  
-- **Resultado**: A gana 100-15.  
+- **Resultado**: A gana 105-15.  
+- **S**: 1 por victoria.  
 - **Cálculos**:  
-  1. \(E_{\text{eq}} = 0.36\) (36% de probabilidad).  
-  2. **Brecha%**: 85% → **+1 ELO**.  
-  3. **Actualización** (jugador con \(R = 1500\), \(K = 25\)):  
+  1. (E_eq = 0.36) (36% de probabilidad).  
+  2. **Brecha%**: 85.71% → **+1 ELO**.  
+  3. **K-factor** 20 jugador activo y establecido.  
+  3. **ELO individual actual** 1500.  
      \[
-     R' = 1500 + 25 \cdot (1 - 0.36) + 1 = 1517
+     ELO = 1500 + 20 * (1 - 0.36) + 1 = 1513.8 ≈ 1514
      \]
 
 ---
