@@ -15,22 +15,22 @@ E_eq = 1 / (1 + 10^((R_rival - R_propio) / 400))
 
 >function calcularExpectativa(ELO_rivalPar, ELO_propioPar) {
 >  
->  let exponente = (ELO_rivalPar - ELO_propioPar) / 400;
->
->  let potencia = Math.pow(10, exponente);
->
->  let potenciaTruncada = parseFloat(potencia.toFixed(3));
->
->  let expectativa = 1 / (1 + potenciaTruncada);
->
->  let E_eq = parseFloat(expectativa.toFixed(2)); 
->  
->  // toFixed() Redondea a decimales
->  // Usando Math.pow()
->  // 1O base de la exponenciacion
->  // let expectativa = 1 / (1 + 10 ** exponente); // Usando "**" seria igual que "^" 
->  
->  return E_eq;
+>  >let exponente = (ELO_rivalPar - ELO_propioPar) / 400;
+>>
+>  >let potencia = Math.pow(10, exponente);
+>>
+>  >let potenciaTruncada = parseFloat(potencia.toFixed(3));
+>>
+>  >let expectativa = 1 / (1 + potenciaTruncada);
+>>
+>  >let E_eq = parseFloat(expectativa.toFixed(2)); 
+>  >
+>  >// toFixed() Redondea a decimales
+>  >// Usando Math.pow()
+>  >// 1O base de la exponenciacion
+>  >// let expectativa = 1 / (1 + 10 ** exponente); // Usando "**" seria igual que "^" 
+>  >
+>  >return E_eq;
 >
 >}
 
