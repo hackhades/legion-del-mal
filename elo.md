@@ -11,6 +11,7 @@ ELO_pareja = (elo_jugador_A + elo_jugador_B) / 2
 \[
 E_eq = 1 / (1 + 10^((R_rival - R_propio) / 400))
 \]
+
 function calcularExpectativa(ELO_rivalPar, ELO_propioPar) {
   let exponente = (ELO_rivalPar - ELO_propioPar) / 400;
 
