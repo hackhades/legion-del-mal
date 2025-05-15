@@ -100,7 +100,8 @@ ELO = ELO + K * (S - E_eq) + Bono_Aplastante
 | Factor K (nuevos)     | 40 (<1600 ELO o <20 partidas)           |
 | Factor K (inactivos)  | 32 (por 5 partidas)                     |
 | Factor K (intermedios)| 20 (1600-2000 ELO)                      |
-| Factor K (élite)      | 10 (>2000 ELO)                          |
+| Factor K (élite)      | 15 (>2000 ELO)                          |
+| Factor K (gran maestro)| 10 (>2200 ELO)                          |
 | Penalización abandono | -7 ELO                                  |
 | Bono aplastante       | +1/+2/+3 ELO (según brecha)             |
 
