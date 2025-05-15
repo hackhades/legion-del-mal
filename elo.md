@@ -83,7 +83,7 @@ ELO = ELO + K * (S - E_eq) + Bono_Aplastante
 ### 1. **Abandono (Conducta Antideportiva)**
 - **Jugador que abandona**:  
   \[
-  ELO = ELO - 7 (Penalización fija)
+  ELO = ELO - 10 (Penalización fija)
   \]
 - **Equipo contrario**: Sin cambios en su ELO.  
 
