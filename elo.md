@@ -28,7 +28,7 @@ function calcularExpectativa(ELO_rivalPar, ELO_propioPar) {
   // toFixed() Redondea a decimales
   // Usando Math.pow()
   // 1O base de la exponenciacion
-  // let expectativa = 1 / (1 + 10 ** exponente); // Usando **
+  // let expectativa = 1 / (1 + 10 ** exponente); // Usando "**" seria igual que "^" 
   
   return E_eq;
 
