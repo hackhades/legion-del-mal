@@ -7,12 +7,14 @@
 ELO_pareja = (elo_jugador_A + elo_jugador_B) / 2
 \]
 
+
 ### 2. **Probabilidad Esperada de Victoria**
 \[
 E_eq = 1 / (1 + 10^((R_rival - R_propio) / 400))
 \]
 
 function calcularExpectativa(ELO_rivalPar, ELO_propioPar) {
+  
   let exponente = (ELO_rivalPar - ELO_propioPar) / 400;
 
   let potencia = Math.pow(10, exponente);
@@ -29,6 +31,7 @@ function calcularExpectativa(ELO_rivalPar, ELO_propioPar) {
   // let expectativa = 1 / (1 + 10 ** exponente); // Usando **
   
   return E_eq;
+
 }
 
 
