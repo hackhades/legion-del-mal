@@ -46,6 +46,7 @@ Métrica que mide **eficiencia en el manejo de puntos**
 ## ⚖️ Criterios de Desempate (Orden de Prioridad)
 1. **Partidas Ganadas (PG)**.  
 2. **Efectividad (Eff)**.  
+4. **Buchholz**.  
 3. **Diferencia de Puntos (Diff)** (`PF - PC`).  
 4. **Puntos a Favor (PF)**.  
 5. **Enfrentamiento Directo** (si hubo partida entre los empatados).  
