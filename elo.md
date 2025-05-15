@@ -4,20 +4,39 @@
 
 ### 1. **Cálculo del ELO del Equipo**
 \[
-R_{\text{eq}} = \frac{R_{\text{Jugador 1}} + R_{\text{Jugador 2}}}{2}
+ELO_pareja = (elo_jugador_A + elo_jugador_B) / 2
 \]
 
 ### 2. **Probabilidad Esperada de Victoria**
 \[
-E_{\text{eq}} = \frac{1}{1 + 10^{(R_{\text{rival}} - R_{\text{propio}})/400}}
+E_eq = 1 / (1 + 10^((R_rival - R_propio) / 400))
+
+function calcularExpectativa(ELO_rivalPar, ELO_propioPar) {
+  let exponente = (ELO_rivalPar - ELO_propioPar) / 400;
+
+  let potencia = Math.pow(10, exponente);
+
+  let potenciaTruncada = parseFloat(potencia.toFixed(3));
+
+  let expectativa = 1 / (1 + potenciaTruncada);
+
+  let E_eq = parseFloat(expectativa.toFixed(2)); 
+  
+  // toFixed() Redondea a decimales
+  // Usando Math.pow()
+  // 1O base de la exponenciacion
+  // let expectativa = 1 / (1 + 10 ** exponente); // Usando **
+  
+  return E_eq;
+}
 \]
 
 ### 3. **Actualización del ELO Individual**
 \[
-R' = R + K \cdot (S - E_{\text{eq}}) + \text{Bono\_Aplastante}
+ELO = ELO + K * (S - E_eq) + Bono_Aplastante
 \]
 - **\(S\)**: 1 (victoria) / 0 (derrota).
-- **Bono_Aplastante**: Ver sección 4.
+- **Bono_Aplastante**: Ver siguiente sección.
 
 ---
 
@@ -26,7 +45,7 @@ R' = R + K \cdot (S - E_{\text{eq}}) + \text{Bono\_Aplastante}
 1. El equipo ganador **alcanza o supera el puntaje objetivo** (ej. 100/200 puntos).  
 2. La **brecha porcentual** cumple:  
    \[
-   \text{Brecha\%} = \left(\frac{\text{Puntos Ganador} - \text{Puntos Perdedor}}{\text{Puntos Ganador}}\right) \times 100\%
+   Brecha = ((Puntos Ganador - Puntos Perdedor) / Puntos Ganador) * 100
    \]
    - **+3 ELO** → 100% (ej. 100-0).  
    - **+2 ELO** → ≥90% (ej. 100-10).  
@@ -39,16 +58,15 @@ R' = R + K \cdot (S - E_{\text{eq}}) + \text{Bono\_Aplastante}
 ---
 
 ## ⏳ **Ajustes por Inactividad**
-### 1. **Inactividad ≥6 meses**
+### 1. **Inactividad ≥3 meses**
 - **Primeras 5 partidas de regreso**:  
-  - \(K = 30\) (sin importar su ELO).  
+  - \(K = 32\) (sin importar su ELO).  
 - **Objetivo**: Reajustar rápido su ELO real.  
 
-### 2. **Inactividad ≥12 meses**
+### 2. **Inactividad ≥6 meses**
 - **Decaimiento mensual**:  
   \[
-  \text{ELO} = \text{ELO} \times 0.98 \quad (\text{-2\% por mes, máximo -10\%})
-  \]
+    ELO = ELO * 0.98 (-2% por mes)  \]
   - Ejemplo: 2000 ELO → 1960 tras 1 año.  
 
 ---
@@ -57,7 +75,7 @@ R' = R + K \cdot (S - E_{\text{eq}}) + \text{Bono\_Aplastante}
 ### 1. **Abandono (Conducta Antideportiva)**
 - **Jugador que abandona**:  
   \[
-  R' = R - 7 \quad (\text{Penalización fija})
+  ELO = ELO - 7 (Penalización fija)
   \]
 - **Equipo contrario**: Sin cambios en su ELO.  
 
@@ -70,9 +88,10 @@ R' = R + K \cdot (S - E_{\text{eq}}) + \text{Bono\_Aplastante}
 ## 🎯 **Parámetros Clave**
 | **Concepto**          | **Valor**                               |
 |-----------------------|-----------------------------------------|
-| ELO inicial           | 1200 (o 1500)                           |
-| Factor K (nuevos)     | 40 (<1600 ELO o <30 partidas)           |
-| Factor K (intermedios)| 25 (1600-2000 ELO)                      |
+| ELO inicial           | 1200                                    |
+| Factor K (nuevos)     | 40 (<1600 ELO o <20 partidas)           |
+| Factor K (inactivos)  | 32 (por 5 partidas)                     |
+| Factor K (intermedios)| 20 (1600-2000 ELO)                      |
 | Factor K (élite)      | 10 (>2000 ELO)                          |
 | Penalización abandono | -7 ELO                                  |
 | Bono aplastante       | +1/+2/+3 ELO (según brecha)             |
