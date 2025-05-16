@@ -22,5 +22,4 @@
 20. Lady Shiva
 21. Gigante Man
 22. Deadshot
-23. Scarecrow
 
