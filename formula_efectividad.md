@@ -15,7 +15,7 @@
 | **Average (Avg)**     | `Avg = PF / PJ`                    | Puntos promedio por partida.                   |
 | **Win Rate (%)**      | `Win Rate = (PG / PJ) × 100`       | % de partidas ganadas.                         |
 | **Efectividad (Eff)** | `Eff = 0.7×Win_Rate + 0.3×DRP_Híbrida` | Combina victorias y dominio de puntos.        |
-| **DRP_base**         | `[(PF-PC)/(Puntaje_Partida×PJ)] × 100`                                 | Rendimiento base normalizado               |
+| **DRP_base**         | `[(PF-PC)/(umbral_max_Partida×PJ)] × 100`                                 | Rendimiento base normalizado               |
 | **DRP_excedentes**   | `[(PF-PC)/(PF+PC)] × 100`                                              | Proporción de dominio de puntos            |
 | **multiplicacion**   | `(DRP_base × DRP_excedentes)`                            | Para que siempre de positivo    |
 | **DRP Híbrida**      | `√multiplicacion`                                         | Combinación equilibrada de rendimiento     |
