@@ -8,7 +8,7 @@ El **Índice de Ataque Relativo (IAR)** mide la fuerza ofensiva de un jugador en
 ## 📐 Fórmula General
 
 \[
-IAR = \frac{PF_{jugador}}{Media\_Ataque\_Ajustada}
+IAR = PF_jugador / Media_Ataque_Ajustada
 \]
 
 - **PF<sub>jugador</sub>:** Puntos a favor del jugador.
@@ -24,7 +24,7 @@ IAR = \frac{PF_{jugador}}{Media\_Ataque\_Ajustada}
    - ❌ Si el último tuvo inasistencias, excluye también al penúltimo.
 3. **Calcula:**
    \[
-   Media\_Ataque\_Ajustada = \frac{\sum PF_{restantes}}{N - \text{nº de excluidos}}
+   Media_Ataque_Ajustada = (∑ PF_restantes) / (N - nº de excluidos)
    \]
 
 ---
@@ -37,7 +37,7 @@ IAR = \frac{PF_{jugador}}{Media\_Ataque\_Ajustada}
 - **Media ajustada:** (300 + 250 + 200) / 3 = **250**
 - **Ejemplo de jugador:** PF = 200  
   \[
-  IAR = \frac{200}{250} = 0.80
+  IAR = 200 / 250 = 0.80
   \]
   **Interpretación:** Ataque inferior al promedio ajustado.
 
@@ -49,7 +49,7 @@ IAR = \frac{PF_{jugador}}{Media\_Ataque\_Ajustada}
 - **Media ajustada:** (300 + 250) / 2 = **275**
 - **Ejemplo de jugador:** PF = 250  
   \[
-  IAR = \frac{250}{275} \approx 0.91
+  IAR = 250 / 275 ≈ 0.91
   \]
   **Interpretación:** El IAR no se distorsiona por el abandono.
 
