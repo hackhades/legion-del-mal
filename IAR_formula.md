@@ -69,7 +69,7 @@ def calcular_IAR(PF_jugador, lista_PF_todos, inasistencias_ultimo=False):
 
 
 Parámetros:
-Parámetro	Tipo	Descripción
-PF_jugador	float	Puntos a favor del jugador a evaluar
-lista_PF_todos	list[float]	Lista de PF de todos los jugadores
-inasistencias_ultimo	bool	Si True, excluye también al penúltimo
+Parámetro	            Tipo	    Descripción
+PF_jugador	            float	    Puntos a favor del jugador a evaluar
+lista_PF_todos	        list[float]	Lista de PF de todos los jugadores
+inasistencias_ultimo	bool	    Si True, excluye también al penúltimo
