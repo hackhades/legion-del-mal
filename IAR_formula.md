@@ -96,7 +96,7 @@ def calcular_IAR(PF_jugador, lista_PF_todos, inasistencias_ultimo=False):
 
 **Cálculo:**  
 \[
-\text{Diff. Prom. Ataque \%} = (IAR_{calculado} - 1) \times 100
+Diff. Prom. Ataque % = (IAR_calculado - 1) * 100
 \]
 
 **Columna sugerida:**  
