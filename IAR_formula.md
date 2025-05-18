@@ -91,3 +91,24 @@ def calcular_IAR(PF_jugador, lista_PF_todos, inasistencias_ultimo=False):
 - **IAR < 1:** Ataque inferior al promedio ajustado.
 
 ---
+
+## 📈 Mostrar como Diferencia Porcentual del Promedio (Diff. Prom. Ataque %)
+
+**Cálculo:**  
+\[
+\text{Diff. Prom. Ataque \%} = (IAR_{calculado} - 1) \times 100
+\]
+
+**Columna sugerida:**  
+- `Dif. AvC (%)`  
+- `+/- Prom. Ofensivo (%)`  
+- `Desv. Ofen. (%)`
+
+**Valor ejemplo:**  
+- Si IAR = 0.80 ⇒ **-20.0%** (o **-20%**):  
+  > “Fue un 20% peor que el promedio.”
+- Si IAR = 1.35 ⇒ **+35%**:  
+  > “Un 35% por encima del promedio.”
+- **El 0% es la línea base** (igual al promedio ofensivo ajustado).
+
+---
