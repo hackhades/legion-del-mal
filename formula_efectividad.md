@@ -24,7 +24,9 @@
 
 # Paso: Promedio Buchholz truncado
 ·  Excluir el PG más bajo de la lista de PG de los oponentes.
+
 ·	Calcular Suma_PGT (suma de los PG de los N-1 oponentes restantes).
+
 ·	Calcular PBT_final = (Suma_PGT × 10) / (N-1).
 
 
