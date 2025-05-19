@@ -103,7 +103,7 @@ TBz_crudo = ∑ PG_oponentes - min(PG_oponentes)
 Para comparar y visualizar el desempeño relativo, se recomienda **normalizar** los valores TBz_crudo al rango [0, 100] usando la siguiente fórmula:
 
 \[
-TBz_{norm} = \frac{TBz_{crudo} - TBz_{min}}{TBz_{max} - TBz_{min}} \times 100
+TBz_norm = (TBz_crudo - TBz_min) / (TBz_max - TBz_min) * 100
 \]
 
 Donde:
@@ -119,8 +119,11 @@ Donde:
 
 \[
 A_PBT_norm = (24 - 4) / 20 * 100 = 100%
+
 B_PBT_norm = (21 - 4) / 20 * 100 = 85%
+
 C_PBT_norm = (13 - 4) / 20 * 100 = 45%
+
 D_PBT_norm = (4 - 4) / 20 * 100 = 0%
 \]
 
