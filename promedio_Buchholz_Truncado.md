@@ -2,7 +2,7 @@
 
     # 🏅 Método PBT Recomendado (TBz)
 
-El sistema Buchholz es un método clásico de desempate en torneos suizos o ligas. Evalúa la "fuerza" de los oponentes que enfrentó cada jugador, sumando los puntos de torneo de todos sus rivales. El **Truncado Buchholz (TBz)** mejora este sistema al excluir el puntaje más bajo de los oponentes (evitando que un rival muy débil distorsione el cálculo). En algunos sistemas se excluye también el mayor, pero aquí solo se elimina el menor para simplificar.
+El sistema Buchholz es un método clásico de desempate en torneos suizos o ligas. Evalúa la "fuerza" de los oponentes que enfrentó cada jugador, sumando las partidas ganadas (PG) de todos sus rivales. El **Truncado Buchholz (TBz)** mejora este sistema al excluir el puntaje más bajo de los oponentes (evitando que un rival muy débil distorsione el cálculo). En algunos sistemas se excluye también el mayor, pero aquí solo se elimina el menor para simplificar.
 
 Para cada jugador participante en el torneo, el PBT_final se calcula de la siguiente manera:
 
@@ -51,13 +51,6 @@ Se aplicará uno de los siguientes tres casos, dependiendo del valor de N:
 3.  Si **N = 1**, entonces **PBT_final = (PG del único oponente) × 10**.
 4.  Si **N >= 2**, entonces:
     *   ver siguiente sección
-
-
----
-
-## 📊 ¿Qué se considera "Puntos de Torneo"?
-
-En este sistema, el punto de torneo más directo es **PG** (*Partidas Ganadas*), ya que no existen empates.
 
 ---
 
