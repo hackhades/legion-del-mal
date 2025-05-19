@@ -7,6 +7,7 @@
 | **Partidas Ganadas (PG)** | `PG = ∑ Victorias`               | Partidas ganadas.                              |
 | **Puntos Favor (PF)**    | `PF = ∑ Puntos anotados`         | Puntos totales a favor.                        |
 | **Puntos Contra (PC)**   | `PC = ∑ Puntos recibidos`        | Puntos totales en contra.                      |
+| **Puntaje**   | `ptj_base = 100 o 200 ó mas`        | Puntaje objetivo por partida durante un torneo.            |
 
 ## 📈 Métricas de Rendimiento
 | **Nombre**            | **Fórmula**                          | **Descripción**                                  |
@@ -14,9 +15,10 @@
 | **Diferencia (Diff)** | `Diff = PF - PC`                   | Balance neto de puntos.                        |
 | **Average (Avg)**     | `Avg = PF / PJ`                    | Puntos promedio por partida.                   |
 | **Win Rate (%)**      | `Win Rate = (PG / PJ) × 100`       | % de partidas ganadas.                         |
-| **Efectividad (Eff)** | `Eff = 0.7×Win_Rate + 0.3×DRP_Híbrida` | Combina victorias y dominio de puntos.        |
-| **DRP_base**         | `[(PF-PC)/(umbral_max_Partida×PJ)] × 100`                                 | Rendimiento base normalizado               |
-| **DRP_excedentes**   | `[(PF-PC)/(PF+PC)] × 100`                                              | Proporción de dominio de puntos            |
+| **Efectividad (Eff)** | `Eff = 0.45×Win_Rate + 0.35×DRP + 0.20×PBT_final` | Combina victorias y dominio de puntos.        |
+| **DRP**         | `[(PF-PC)/(umbral×PJ)] × 100`                                 | Rendimiento base normalizado               |
+| **Umbral** | `umbral = ptj_base * (1 + (1/3 * (PF_total / (ptj_base × PJ))))` | denominador de DRP.        |
+| **IDR**   | `[(PF-PC)/(PF+PC)] × 100`                                              | Proporción de dominio de puntos            |
 | **multiplicacion**   | `(DRP_base × DRP_excedentes)`                            | Para que siempre de positivo    |
 | **DRP Híbrida**      | `√multiplicacion`                                         | Combinación equilibrada de rendimiento     |
 
