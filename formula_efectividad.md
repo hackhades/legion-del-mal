@@ -15,23 +15,17 @@
 | **Diferencia (Diff)** | `Diff = PF - PC`                   | Balance neto de puntos.                        |
 | **Average (Avg)**     | `Avg = PF / PJ`                    | Puntos promedio por partida.                   |
 | **Win Rate (%)**      | `Win Rate = (PG / PJ) × 100`       | % de partidas ganadas.                         |
-| **Efectividad (Eff)** | `Eff = 0.45×Win_Rate + 0.35×DRP + 0.20×PBT_final` | Combina victorias y dominio de puntos.        |
+| **IAR**   | `(IAR_calculado - 1) * 100`                     | Mostrar como Diferencia Porcentual    |
+| **IDR**   | `[(PF-PC)/(PF+PC)] × 100`                       | Proporción de dominio de puntos            |
+| **Efectividad (Eff)** | `Eff = 0.45×Win_Rate + 0.35×DRP + 0.20×PBT_normalizado` | Combina victorias y dominio de puntos.        |
 | **DRP**         | `[(PF-PC)/(umbral×PJ)] × 100`                                 | Rendimiento base normalizado               |
 | **Umbral** | `umbral = ptj_base * (1 + (1/3 * (PF_total / (ptj_base × PJ))))` | denominador de DRP.        |
-| **IDR**   | `[(PF-PC)/(PF+PC)] × 100`                                              | Proporción de dominio de puntos            |
-| **multiplicacion**   | `(DRP_base × DRP_excedentes)`                            | Para que siempre de positivo    |
-| **DRP Híbrida**      | `√multiplicacion`                                         | Combinación equilibrada de rendimiento     |
+| **TBz**      | `(Suma_PG_total_todos × 10) / (N-1)`     | N (número de oponentes únicos) - ultimo     |
 
-# Paso 2: Versión Caso zapato
-    Si PF == 0:  
-        Eff = 0.7×Win_Rate + 1 ×DRP_Híbrida
-    Si no:
-        Eff = 0.7×Win_Rate + 0.3×DRP_Híbrida
-
-# Paso 3: Escenario Efectividad Negativa
-    Si PF < PC  
-        -DRP_Híbrida
-        Eff = 0.7×Win_Rate + 0.3×DRP_Híbrida_negativa 
+# Paso: Promedio Buchholz truncado
+·  Excluir el PG más bajo de la lista de PG de los oponentes.
+·	Calcular Suma_PGT (suma de los PG de los N-1 oponentes restantes).
+·	Calcular PBT_final = (Suma_PGT × 10) / (N-1).
 
 
 
