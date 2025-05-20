@@ -14,8 +14,8 @@ Esta tabla está diseñada para torneos oficiales, de élite e internacionales, 
 | **Partidas Jugadas**| PJ          | Número total de partidas disputadas.                                                     |
 | **Victorias**       | V           | Cantidad de partidas ganadas.                                                            |
 | **Derrotas**        | D           | Cantidad de partidas perdidas.                                                           |
-| **Índice de Eficiencia** | EFF     | Medida de eficiencia y rendimiento global (puede variar según reglamento).                             |
-| **Índice de Dominio Normalizado** | IDN | [(PF - PC)/(PF + PC)] × 100. Refleja el dominio relativo normalizado sobre el total jugado.|
+| **Índice de Efectividad** | EFF     | Medida de eficiencia y rendimiento global (puede variar según reglamento).                             |
+| **Índice de Dominio Normalizado** | IDN % | [(PF - PC)/(PF + PC)] × 100. Refleja el dominio relativo normalizado sobre el total jugado.|
 | **Performance de Oponentes** | Prom_TBz | Suma o promedio de los puntos de los rivales enfrentados (Buchholz truncado).           |
 | **Puntos a Favor**  | PF          | Total de puntos anotados.                                                                |
 | **Puntos en Contra**| PC          | Total de puntos recibidos.                                                               |
@@ -23,7 +23,6 @@ Esta tabla está diseñada para torneos oficiales, de élite e internacionales, 
 | **Win Rate**        | WR       | (Victorias / Partidas Jugadas) × 100. Porcentaje de partidas ganadas.                   |
 | **ELO Rating**      | ELO         | Valoración internacional basada en el sistema ELO.                                       |
 | **Índice de Ataque Relativo** | IAR  | (PF_jugador / Media_Ataque_Ajustada) × 100. (%) del Poder ofensivo relativo al promedio.       |
-| **Dominio Neto por Partida** | DNP  | DIFF / PJ. Saldo neto de puntos por partida.                                            |
 | **Promedio de Puntos por Partida** | AVG | PF / PJ. Promedio de puntos a favor por partida jugada.                                 |
 
 ---
@@ -40,11 +39,10 @@ Esta tabla está diseñada para torneos oficiales, de élite e internacionales, 
 
 ## 💡 Notas de Interpretación
 
-- **EFF:** Puede representar eficiencia táctica, estratégica o basada en criterios propios del torneo.
+- **EFF:** Puede representar eficiencia táctica, estratégica y rendimiento continuo durante del torneo.
 - **IDN (%):** Valores positivos indican dominio neto, negativos dominio adverso.
-- **Prom_TBz:** Útil como criterio de desempate en sistema suizo.
+- **Prom_TBz:** Fuerza de Calendario, útil como criterio de desempate en sistema suizo.
 - **IAR (%):** >100% indica ataque superior al promedio ajustado del torneo.
-- **DNP:** Muestra el saldo de puntos que el jugador obtiene por partida.
 - **AVG:** Mide la capacidad ofensiva media por ronda.
 
 ---
