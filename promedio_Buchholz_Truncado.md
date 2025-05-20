@@ -67,7 +67,7 @@ TBz_crudo = ∑ PG_oponentes - min(PG_oponentes)
 \]
 
 > **Nota:**  
-> En algunos métodos, el TBz se escala para promedios (multiplica por 10 y divide por N-1, donde N es el número de oponentes), pero el método estándar recomendado es simplemente la suma truncada.
+> En algunos métodos, el TBz se escala (opcional) y se promedia dividiendo entre N-1, donde N es el número de oponentes, pero el método estándar recomendado es simplemente la suma truncada.
 
 ---
 
