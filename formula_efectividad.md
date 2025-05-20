@@ -16,7 +16,7 @@
 | **Average (Avg)**     | `Avg = PF / PJ`                    | Puntos promedio por partida.                   |
 | **Win Rate (%)**      | `Win Rate = (PG / PJ) × 100`       | % de partidas ganadas.                         |
 | **IAR**   | `(IAR_calculado - 1) * 100`                     | Mostrar como Diferencia Porcentual    |
-| **IDR**   | `[(PF-PC)/(PF+PC)] × 100`                       | Proporción de dominio de puntos            |
+| **IDN**   | `[(PF-PC)/(PF+PC)] × 100`                       | Proporción de dominio de puntos            |
 | **Efectividad (Eff)** | `Eff = 0.45×Win_Rate + 0.35×DRP + 0.20×PBT_normalizado` | Combina victorias y dominio de puntos.        |
 | **DRP**         | `[(PF-PC)/(umbral×PJ)] × 100`                                 | Rendimiento base normalizado               |
 | **Umbral** | `umbral = ptj_base * (1 + (1/3 * (PF_total / (ptj_base × PJ))))` | denominador de DRP.        |
