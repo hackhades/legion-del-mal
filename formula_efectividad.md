@@ -20,14 +20,14 @@
 | **Efectividad (Eff)** | `Eff = 0.45×Win_Rate + 0.35×DRP + 0.20×PBT_normalizado` | Combina victorias y dominio de puntos.        |
 | **DRP**         | `[(PF-PC)/(umbral×PJ)] × 100`                                 | Rendimiento base normalizado               |
 | **Umbral** | `umbral = ptj_base * (1 + (1/3 * (PF_total / (ptj_base × PJ))))` | denominador de DRP.        |
-| **TBz**      | `(Suma_PG_total_todos × 10) / (N-1)`     | N (número de oponentes únicos) - ultimo     |
+| **μTBz**      | `(Suma_PG_total_todos) / (N-1)`     | Fuerza de Calendario / N (número de oponentes únicos) - ultimo     |
 
 # Paso: Promedio Buchholz truncado
 ·  Excluir el PG más bajo de la lista de PG de los oponentes.
 
 ·	Calcular Suma_PGT (suma de los PG de los N-1 oponentes restantes).
 
-·	Calcular PBT_final = (Suma_PGT × 10) / (N-1).
+·	Calcular PBT_final = (Suma_PGT) / (N-1).
 
 
 
@@ -38,16 +38,20 @@
 Métrica que mide **eficiencia en el manejo de puntos** 
 
 **símbolo Σ** = *Sigma* , suma lineal   
+**μ** = *Promedio* , suma lineal / N total   
  
-
-
+IAR, avg , PF
 ## ⚖️ Criterios de Desempate (Orden de Prioridad)
 1. **Partidas Ganadas (PG)**.  
 2. **Efectividad (Eff)**.  
-4. **Buchholz**.  
+4. **μ Buchholz**.  
+4. **IDN**.  
 3. **Diferencia de Puntos (Diff)** (`PF - PC`).  
 4. **Puntos a Favor (PF)**.  
-5. **Enfrentamiento Directo** (si hubo partida entre los empatados).  
+4. **IAR**.  
+4. **AVG**.  
+4. **PF**.  
+5. **Enfrentamiento Directo por ELO** (mayor ELO inicial, previo al torneo).  
 
 # 📋 Criterios de Emparejamiento para Torneos de Dominó (Sistema Suizo con Parejas Rotativas)
 
