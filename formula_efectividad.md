@@ -34,9 +34,11 @@
 # 📌 Definición de DRP en Dominó (Fórmulas y Significado)
 
 ## 🔎 **¿Qué es DRP?**
-**DRP** = *Diferencia Relativa de Puntos* Métrica que mide eficiencia en el manejo de puntos. 
+**DRP** = *Diferencia Relativa de Puntos* Métrica que mide eficiencia en el manejo de puntos
+
+**μ** = *Promedio* , suma lineal / N total
+
 **símbolo Σ** = *Sigma* , suma lineal   
-**μ** = *Promedio* , suma lineal / N total   
  
 
 ## ⚖️ Criterios de Desempate (Orden de Prioridad)
