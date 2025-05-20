@@ -40,7 +40,6 @@ Métrica que mide **eficiencia en el manejo de puntos**
 **símbolo Σ** = *Sigma* , suma lineal   
 **μ** = *Promedio* , suma lineal / N total   
  
-IAR, avg , PF
 ## ⚖️ Criterios de Desempate (Orden de Prioridad)
 1. **Partidas Ganadas (PG)**.  
 2. **Efectividad (Eff)**.  
