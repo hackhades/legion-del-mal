@@ -8,26 +8,26 @@
 
 ### **Fórmula:**
 \[
-EFF_{pequeño} = 0.45 \times Win\_Rate + 0.35 \times DNP_{norm} + 0.20 \times IAR_{norm}
+EFF_pequeño = 0.45 * Win_Rate + 0.35 * DNP_norm + 0.20 * IAR_norm
 \]
 
 - **Win_Rate:** % de partidas ganadas.  
   \[
-  Win\_Rate = (Victorias / Partidas\ Jugadas) \times 100
+  Win_Rate = (Victorias / Partidas Jugadas) * 100
   \]
 - **DNP_norm:** Dominio Neto por Partida, normalizado a [0,100].  
   \[
   DNP = (PF - PC) / PJ
   \]
   \[
-  DNP_{norm} = \frac{DNP - DNP_{min}}{DNP_{max} - DNP_{min}} \times 100
+  DNP_norm = (DNP - DNP_min) / (DNP_max - DNP_min) * 100
   \]
 - **IAR_norm:** Índice de Ataque Relativo, normalizado a [0,100].  
   \[
-  IAR = PF / Media\_Ataque
+  IAR = PF / Media_Ataque
   \]
   \[
-  IAR_{norm} = \frac{IAR - IAR_{min}}{IAR_{max} - IAR_{min}} \times 100
+  IAR_norm = (IAR - IAR_min) / (IAR_max - IAR_min) * 100
   \]
 
 **Notas:**
@@ -42,17 +42,17 @@ EFF_{pequeño} = 0.45 \times Win\_Rate + 0.35 \times DNP_{norm} + 0.20 \times IA
 
 ### **Fórmula:**
 \[
-EFF_{grande} = 0.45 \times Win\_Rate + 0.35 \times DRP + 0.20 \times PBT_{norm}
+EFF_grande = 0.45 * Win_Rate + 0.35 * DRP + 0.20 * PBT_norm
 \]
 
 - **Win_Rate:** (igual que antes).
 - **DRP:** Diferencia Relativa de Puntos.  
   \[
-  DRP = \frac{PF - PC}{Umbral \times PJ} \times 100
+  DRP = (PF - PC) / (Umbral * PJ) * 100
   \]
   donde  
   \[
-  Umbral = 200 \times \left(1 + \frac{1}{3} \frac{PF}{200 \times PJ}\right)
+  Umbral = 200 * (1 + 1/3 * PF / (200 * PJ))
   \]
 - **PBT_norm:** Performance de Oponentes (Buchholz truncado), normalizado a [0,100].
 
@@ -73,15 +73,15 @@ EFF_{grande} = 0.45 \times Win\_Rate + 0.35 \times DRP + 0.20 \times PBT_{norm}
 
 - **DNP_norm:**  
   \[
-  DNP_{norm} = \frac{DNP - DNP_{min}}{DNP_{max} - DNP_{min}} \times 100
+  DNP_norm = (DNP - DNP_min) / (DNP_max - DNP_min) * 100
   \]
 - **IAR_norm:**  
   \[
-  IAR_{norm} = \frac{IAR - IAR_{min}}{IAR_{max} - IAR_{min}} \times 100
+  IAR_norm = (IAR - IAR_min) / (IAR_max - IAR_min) * 100
   \]
 - **DRP:**  
   \[
-  DRP = \frac{PF - PC}{Umbral \times PJ} \times 100
+  DRP = (PF - PC) / (Umbral * PJ) * 100
   \]
 
 ---
