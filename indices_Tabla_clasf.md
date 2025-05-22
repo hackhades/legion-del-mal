@@ -21,9 +21,10 @@ Esta tabla está diseñada para torneos oficiales, de élite e internacionales, 
 | **Puntos en Contra**| PC          | Total de puntos recibidos.                                                               |
 | **Diferencia de Puntos** | DIFF    | PF - PC. Saldo neto de puntos.                                                          |
 | **Win Rate**        | WR       | (Victorias / Partidas Jugadas) × 100. Porcentaje de partidas ganadas.                   |
-| **ELO Rating**      | ELO         | Valoración internacional basada en el sistema ELO.                                       |
+| **Indice de Contundencia por Victoria**  | ICV | (Victorias_amplias / Partidas Jugadas) |
 | **Índice de Ataque Relativo** | IAR  | (PF_jugador / Media_Ataque_Ajustada) × 100. (%) del Poder ofensivo relativo al promedio.       |
 | **Promedio de Puntos por Partida** | AVG | PF / PJ. Promedio de puntos a favor por partida jugada.                                 |
+| **ELO Rating**      | ELO         | Valoración internacional basada en el sistema ELO.                                       |
 
 ---
 
@@ -44,6 +45,7 @@ Esta tabla está diseñada para torneos oficiales, de élite e internacionales, 
 - **Prom_TBz:** Fuerza de Calendario, útil como criterio de desempate en sistema suizo.
 - **IAR (%):** >100% indica ataque superior al promedio ajustado del torneo.
 - **AVG:** Mide la capacidad ofensiva media por ronda.
+- **Victorias amplias** Victorias con un margen mayor a 50% = 1-(PC/PF) > 0.50
 
 ---
 
