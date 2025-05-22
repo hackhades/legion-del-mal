@@ -32,29 +32,80 @@ EFF_pequeño = 0.45 * Win_Rate + 0.35 * DNP_norm + 0.20 * IAR_norm
 
 **Notas:**
 - Todos los componentes ponderados están en [0,100], asegurando comparación justa.
-- Media_Ataque se calcula como el promedio de PF de todos los jugadores activos (sin exclusiones para grupos pequeños).
+- Media_Ataque se calcula como el promedio de PF de todos los jugadores activos (sin excluir menor ni mayor ya que hay pocos jugadores).
 
 ---
 
-## 🥇 EFF para Torneos Grandes (≥12 jugadores)
+## 🥇 Calcular IAR
 
-**Objetivo:** Medir eficiencia considerando victorias, dominio ajustado y fuerza de oponentes.
+**Objetivo:** Esto escala la desviación para que la máxima desviación observada (positiva o negativa) se mapee a +100 o -100 respectivamente.
 
-### **Fórmula:**
-\[
-EFF_grande = 0.45 * Win_Rate + 0.35 * DRP + 0.20 * PBT_norm
-\]
-
-- **Win_Rate:** (igual que antes).
-- **DRP:** Diferencia Relativa de Puntos.  
-  \[
-  DRP = (PF - PC) / (Umbral * PJ) * 100
-  \]
-  donde  
-  \[
-  Umbral = 200 * (1 + 1/3 * PF / (200 * PJ))
-  \]
-- **PBT_norm:** Performance de Oponentes (Buchholz truncado), normalizado a [0,100].
+  Simulación del IAR_final_component
+  
+  Supongamos un torneo pequeño con 5 jugadores (A, B, C, D, E) y hemos calculado sus PF y la Media de Ataque Simple:
+  
+  PF_A = 1500
+  
+  PF_B = 1200
+  
+  PF_C = 1000
+  
+  PF_D = 700
+  
+  PF_E = 600
+  
+  Suma_PF = 1500+1200+1000+700+600 = 5000
+  
+  Media_Ataque_Simple = 5000 / 5 = 1000
+  
+  Paso 1: Calcular IAR_crudo_j = PF_j / Media_Ataque_Simple
+  
+  IAR_crudo_A = 1500 / 1000 = 1.5
+  
+  IAR_crudo_B = 1200 / 1000 = 1.2
+  
+  IAR_crudo_C = 1000 / 1000 = 1.0 (Exactamente la media)
+  
+  IAR_crudo_D = 700 / 1000 = 0.7
+  
+  IAR_crudo_E = 600 / 1000 = 0.6
+  
+  Paso 2: Calcular IAR_desviacion_j = IAR_crudo_j - 1.0
+  
+  IAR_desviacion_A = 1.5 - 1.0 = +0.5
+  
+  IAR_desviacion_B = 1.2 - 1.0 = +0.2
+  
+  IAR_desviacion_C = 1.0 - 1.0 = 0.0
+  
+  IAR_desviacion_D = 0.7 - 1.0 = -0.3
+  
+  IAR_desviacion_E = 0.6 - 1.0 = -0.4
+  
+  Paso 3: Calcular Max_Abs_Desv_IAR_Torneo = max(abs(IAR_desviacion_j))
+  
+  Max_Abs_Desv_IAR_Torneo = max(0.5, 0.2, 0.0, 0.3, 0.4) = 0.5
+  
+  Paso 4: Calcular IAR_final_component
+  
+  Fórmula: IAR_final_component = (IAR_desviacion_j / Max_Abs_Desv_IAR_Torneo) * 100
+  
+  
+  IAR_final_component_B: (0.2 / 0.5) * 100 = 0.4 * 100 = +40
+  
+  Interpretación: B estuvo por encima de la media, su desviación fue el 40% de la máxima desviación absoluta observada.
+    
+  Resultados del IAR_final_component:
+  
+  A: +100
+  
+  B: +40
+  
+  C: 0
+  
+  D: -60
+  
+  E: -80
 
 ---
 
@@ -76,9 +127,19 @@ EFF_grande = 0.45 * Win_Rate + 0.35 * DRP + 0.20 * PBT_norm
   DNP_norm = (DNP - DNP_min) / (DNP_max - DNP_min) * 100
   \]
 - **IAR_norm:**  
-  \[
-  IAR_norm = (IAR - IAR_min) / (IAR_max - IAR_min) * 100
-  \]
+  - IAR_componente_EFF_escalado_a_cero_en_1.0 se calcula como:
+
+  - IAR_crudo_j = PF_j / Media_Ataque
+
+  - IAR_desviacion_j = IAR_crudo_j - 1.0
+ 
+  - Calcular Max_Abs_Desviacion_Observada_en_torneo de todos los IAR_desviacion_j.
+ 
+ 
+  - IAR_componente_EFF_escalado_a_cero_en_1.0 = (IAR_desviacion_j / Max_Abs_Desviacion_Observada_en_torneo) * 100
+  
+
+Análisis
 - **DRP:**  
   \[
   DRP = (PF - PC) / (Umbral * PJ) * 100
