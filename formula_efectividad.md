@@ -17,17 +17,17 @@
 | **Win Rate (%)**      | `Win Rate = (PG / PJ) × 100`       | % de partidas ganadas.                         |
 | **IAR**   | `(IAR_calculado - 1) * 100`                     | Mostrar como Diferencia Porcentual    |
 | **IDN**   | `[(PF-PC)/(PF+PC)] × 100`                       | Proporción de dominio de puntos            |
-| **Efectividad (Eff)** | `Eff = 0.45×Win_Rate + 0.35×DRP_norm[-100, 100] + 0.20×PBT_normalizado` | Combina victorias y dominio de puntos.        |
+| **Efectividad (Eff)** | `Eff = 0.45×Win_Rate + 0.35×DRP_norm[-100, 100] + 0.20×PBT_norm` | Combina victorias y dominio de puntos.        |
 | **DRP**         | `[(PF-PC)/(umbral×PJ)] × 100`                                 | Rendimiento base normalizado               |
 | **Umbral** | `umbral = ptj_base * (1 + (1/3 * (PF_total / (ptj_base × PJ))))` | denominador de DRP.        |
 | **μTBz**      | `(Suma_PG_total_todos) / (N-1)`     | Fuerza de Calendario / N (número de oponentes únicos) - ultimo     |
 
 # Paso: Promedio Buchholz truncado
-·  Excluir el PG más bajo de la lista de PG de los oponentes.
+-  Excluir el PG más bajo de la lista de PG de los oponentes.
 
-·	Calcular Suma_PGT (suma de los PG de los N-1 oponentes restantes).
+-	Calcular Suma_PGT (suma de los PG de los N-1 oponentes restantes).
 
-·	Calcular PBT_final = (Suma_PGT) / (N-1).
+-	Calcular PBT_final = (Suma_PGT) / (N-1).
 
 
 # Paso normalizar DRP \[-100,100\]
