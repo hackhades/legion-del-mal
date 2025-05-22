@@ -44,61 +44,49 @@ EFF_pequeño = 0.45 * Win_Rate + 0.35 * DNP_norm + 0.20 * IAR_norm
   
   Supongamos un torneo pequeño con 5 jugadores (A, B, C, D, E) y hemos calculado sus PF y la Media de Ataque Simple:
   
-  PF_A = 1500
-  
-  PF_B = 1200
-  
-  PF_C = 1000
-  
-  PF_D = 700
-  
-  PF_E = 600
-  
-  Suma_PF = 1500+1200+1000+700+600 = 5000
+  Suma_PF = PF_A 1500+ PF_B 1200+ PF_C 1000+ PF_D 700+ PF_E 600 = 5000
   
   Media_Ataque_Simple = 5000 / 5 = 1000
   
   - Paso 1: Calcular IAR_crudo_j = PF_j / Media_Ataque_Simple
-  
-  IAR_crudo_A = 1500 / 1000 = 1.5
-  
-  y asi sucesivamete...
-  
+    
+    IAR_crudo_A = 1500 / 1000 = 1.5
+    
+    y asi sucesivamete...
+    
   - Paso 2: Calcular IAR_desviacion_j = IAR_crudo_j - 1.0
   
-  IAR_desviacion_A = 1.5 - 1.0 = +0.5
-  
-  IAR_desviacion_B = 1.2 - 1.0 = +0.2
-  
-  IAR_desviacion_C = 1.0 - 1.0 = 0.0
-  
-  IAR_desviacion_D = 0.7 - 1.0 = -0.3
-  
-  IAR_desviacion_E = 0.6 - 1.0 = -0.4
+    IAR_desviacion_A = 1.5 - 1.0 = +0.5
+
+    IAR_desviacion_C = 1.0 - 1.0 = 0.0
+
+    IAR_desviacion_E = 0.6 - 1.0 = -0.4
+
+    ...
   
   - Paso 3: Calcular Max_Abs_Desv_IAR_Torneo = max(abs(IAR_desviacion_j))
   
-  Max_Abs_Desv_IAR_Torneo = max(0.5, 0.2, 0.0, 0.3, 0.4) = 0.5
+    Max_Abs_Desv_IAR_Torneo = max(0.5, 0.2, 0.0, 0.3, 0.4) = 0.5
   
   - Paso 4: Calcular IAR_final_component
   
-  Fórmula: IAR_final_component = (IAR_desviacion_j / Max_Abs_Desv_IAR_Torneo) * 100
-  
-  IAR_final_component_B: (0.2 / 0.5) * 100 = 0.4 * 100 = +40
-  
-  Interpretación: B estuvo por encima de la media, su desviación fue el 40% de la máxima desviación absoluta observada.
-    
-  Resultados del IAR_final_component:
-  
-  A: +100
-  
-  B: +40
-  
-  C: 0
-  
-  D: -60
-  
-  E: -80
+    Fórmula: IAR_final_component = (IAR_desviacion_j / Max_Abs_Desv_IAR_Torneo) * 100
+
+    IAR_final_component_B: (0.2 / 0.5) * 100 = 0.4 * 100 = +40
+
+    Interpretación: B estuvo por encima de la media, su desviación fue el 40% de la máxima desviación absoluta observada.
+
+    Resultados del IAR_final_component:
+
+    A: +100
+
+    B: +40
+
+    C: 0
+
+    D: -60
+
+    E: -80
 
 ---
 
