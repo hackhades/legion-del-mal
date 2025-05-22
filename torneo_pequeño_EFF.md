@@ -2,7 +2,7 @@
 
 ---
 
-## 🏆 EFF para Torneos Pequeños (≤12 jugadores)
+## 🏆 EFF para Torneos Pequeños ( <13 jugadores)
 
 **Objetivo:** Medir el rendimiento global priorizando victorias, margen de puntos y potencia ofensiva relativa, ideal cuando el Buchholz pierde relevancia.
 
@@ -40,7 +40,7 @@ EFF_pequeño = 0.45 * Win_Rate + 0.35 * DNP_norm + 0.20 * IAR_norm
 
 **Objetivo:** Esto escala la desviación para que la máxima desviación observada (positiva o negativa) se mapee a +100 o -100 respectivamente.
 
-  Simulación del IAR_final_component
+### Simulación del IAR_final_component
   
   Supongamos un torneo pequeño con 5 jugadores (A, B, C, D, E) y hemos calculado sus PF y la Media de Ataque Simple:
   
@@ -58,19 +58,13 @@ EFF_pequeño = 0.45 * Win_Rate + 0.35 * DNP_norm + 0.20 * IAR_norm
   
   Media_Ataque_Simple = 5000 / 5 = 1000
   
-  Paso 1: Calcular IAR_crudo_j = PF_j / Media_Ataque_Simple
+  - Paso 1: Calcular IAR_crudo_j = PF_j / Media_Ataque_Simple
   
   IAR_crudo_A = 1500 / 1000 = 1.5
   
-  IAR_crudo_B = 1200 / 1000 = 1.2
+  y asi sucesivamete...
   
-  IAR_crudo_C = 1000 / 1000 = 1.0 (Exactamente la media)
-  
-  IAR_crudo_D = 700 / 1000 = 0.7
-  
-  IAR_crudo_E = 600 / 1000 = 0.6
-  
-  Paso 2: Calcular IAR_desviacion_j = IAR_crudo_j - 1.0
+  - Paso 2: Calcular IAR_desviacion_j = IAR_crudo_j - 1.0
   
   IAR_desviacion_A = 1.5 - 1.0 = +0.5
   
@@ -82,14 +76,13 @@ EFF_pequeño = 0.45 * Win_Rate + 0.35 * DNP_norm + 0.20 * IAR_norm
   
   IAR_desviacion_E = 0.6 - 1.0 = -0.4
   
-  Paso 3: Calcular Max_Abs_Desv_IAR_Torneo = max(abs(IAR_desviacion_j))
+  - Paso 3: Calcular Max_Abs_Desv_IAR_Torneo = max(abs(IAR_desviacion_j))
   
   Max_Abs_Desv_IAR_Torneo = max(0.5, 0.2, 0.0, 0.3, 0.4) = 0.5
   
-  Paso 4: Calcular IAR_final_component
+  - Paso 4: Calcular IAR_final_component
   
   Fórmula: IAR_final_component = (IAR_desviacion_j / Max_Abs_Desv_IAR_Torneo) * 100
-  
   
   IAR_final_component_B: (0.2 / 0.5) * 100 = 0.4 * 100 = +40
   
