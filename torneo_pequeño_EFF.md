@@ -116,16 +116,8 @@ EFF_pequeño = 0.45 * Win_Rate + 0.35 * DNP_norm + 0.20 * IAR_norm
  
   - Calcular Max_Abs_Desviacion_Observada_en_torneo de todos los IAR_desviacion_j.
  
- 
   - IAR_componente_EFF_escalado_a_cero_en_1.0 = (IAR_desviacion_j / Max_Abs_Desviacion_Observada_en_torneo) * 100
   
-
-Análisis
-- **DRP:**  
-  \[
-  DRP = (PF - PC) / (Umbral * PJ) * 100
-  \]
-
 ---
 
 ## 🚀 **Conclusión Final**
