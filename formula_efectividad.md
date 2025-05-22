@@ -17,7 +17,7 @@
 | **Win Rate (%)**      | `Win Rate = (PG / PJ) × 100`       | % de partidas ganadas.                         |
 | **IAR**   | `(IAR_calculado - 1) * 100`                     | Mostrar como Diferencia Porcentual    |
 | **IDN**   | `[(PF-PC)/(PF+PC)] × 100`                       | Proporción de dominio de puntos            |
-| **Efectividad (Eff)** | `Eff = 0.45×Win_Rate + 0.35×DRP + 0.20×PBT_normalizado` | Combina victorias y dominio de puntos.        |
+| **Efectividad (Eff)** | `Eff = 0.45×Win_Rate + 0.35×DRP_norm[-100, 100] + 0.20×PBT_normalizado` | Combina victorias y dominio de puntos.        |
 | **DRP**         | `[(PF-PC)/(umbral×PJ)] × 100`                                 | Rendimiento base normalizado               |
 | **Umbral** | `umbral = ptj_base * (1 + (1/3 * (PF_total / (ptj_base × PJ))))` | denominador de DRP.        |
 | **μTBz**      | `(Suma_PG_total_todos) / (N-1)`     | Fuerza de Calendario / N (número de oponentes únicos) - ultimo     |
@@ -28,6 +28,17 @@
 ·	Calcular Suma_PGT (suma de los PG de los N-1 oponentes restantes).
 
 ·	Calcular PBT_final = (Suma_PGT) / (N-1).
+
+
+# Paso normalizar DRP \[-100,100\]
+
+   (DRP Equitativo Normalizado y Escalado):
+
+   -   Crudo: Se calcula el DRP_equitativo_crudo para cada jugador (considera PF, PC, PJ y un umbral dinámico ajustado por la ofensiva del jugador). Puede ser negativo.
+
+   -   Escalado: Los DRP_equitativo_crudo de todos los jugadores se normalizan Min-Max a una escala de [-100, 100].
+
+   -   Fórmula de escalado: Norm = (((Crudo - Min_Crudo) / Rango_Crudo) * 200) - 100
 
 
 
