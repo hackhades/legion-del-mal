@@ -34,6 +34,61 @@ ICR = (1 - Desviación_Estándar_Puntos/Media_Puntos_Por_Juego) × 100
 - **Justificación**: Información completamente nueva sobre estabilidad
 - **Fortalezas**: Correlación mínima con otros índices, alta relevancia táctica
 
+### **📏 Cálculo de la Desviación Estándar para el ICR**
+
+#### **Fórmula de la Desviación Estándar Muestral:**
+```
+s = √[ Σ(xᵢ - x̄)² / (n - 1) ]
+```
+Donde:
+- `xᵢ` = Puntos en la partida i-ésima
+- `x̄` = Media de puntos por partida
+- `n` = Número de partidas jugadas
+
+#### **Pasos con Ejemplo Práctico:**
+
+Supongamos que un jugador obtuvo los siguientes puntos en 5 partidas: 80, 90, 100, 85, 95
+
+1. **Calcular la media (x̄):**
+   ```
+   x̄ = (80 + 90 + 100 + 85 + 95) / 5 = 450 / 5 = 90
+   ```
+
+2. **Calcular las diferencias al cuadrado:**
+   ```
+   (80-90)² = 100
+   (90-90)² = 0
+   (100-90)² = 100
+   (85-90)² = 25
+   (95-90)² = 25
+   ```
+
+3. **Sumar las diferencias al cuadrado:**
+   ```
+   Σ(xᵢ - x̄)² = 100 + 0 + 100 + 25 + 25 = 250
+   ```
+
+4. **Calcular la varianza:**
+   ```
+   s² = 250 / (5 - 1) = 62.5
+   ```
+
+5. **Obtener la desviación estándar:**
+   ```
+   s = √62.5 ≈ 7.91
+   ```
+
+6. **Calcular el ICR:**
+   ```
+   ICR = (1 - (s / x̄)) × 100
+   ICR = (1 - (7.91 / 90)) × 100 ≈ 91.21
+   ```
+
+#### **Consideraciones Importantes:**
+- Si la desviación estándar es mayor que la media, el ICR se establece en 0 para evitar valores negativos.
+- Se requiere un mínimo de 3 partidas para calcular un ICR válido.
+- Valores altos de ICR (cercanos a 100) indican mayor consistencia en el rendimiento.
+
 #### **3. Índice de Contundencia por Victoria (ICV) - 20%**
 ```
 ICV = (Victorias_Amplias / PJ) × 100
