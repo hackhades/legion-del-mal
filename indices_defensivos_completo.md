@@ -50,6 +50,44 @@ ICD = (1 - Desviación_Estándar_PC / Media_PC_Jugador) × 100
 
 ---
 
+## 🧮 **Cálculo Detallado de Desviación Estándar**
+
+### **Fórmula General:**
+```
+σ = √[(Σ(xi - μ)²) / (n - 1)]
+
+Donde:
+- σ = Desviación estándar
+- xi = Cada valor individual (PC por ronda)
+- μ = Media de los valores
+- n = Número total de valores
+- (n-1) = Grados de libertad (para muestra)
+```
+
+### **Proceso Paso a Paso:**
+
+#### **Paso 1: Calcular la Media**
+```
+Media = Σ(PC por ronda) / n
+```
+
+#### **Paso 2: Calcular las Diferencias al Cuadrado**
+```
+Para cada ronda: (PC_ronda - Media)²
+```
+
+#### **Paso 3: Calcular la Varianza**
+```
+Varianza = Σ(Diferencias²) / (n - 1)
+```
+
+#### **Paso 4: Calcular la Desviación Estándar**
+```
+Desviación Estándar = √(Varianza)
+```
+
+---
+
 ## 📊 **Ejemplo Práctico Completo**
 
 ### **Escenario: Torneo Nacional - 10 jugadores, 9 rondas**
@@ -72,8 +110,40 @@ Desviación estándar promedio del torneo: 18.5 puntos por ronda
 ```
 PC Total: 540 puntos
 PC por ronda: [60, 58, 62, 59, 61, 57, 63, 60, 60]
-Media PC por ronda: 60 puntos
-Desviación Estándar PC: 2.06 puntos
+```
+
+#### **Cálculo Detallado de Desviación Estándar:**
+
+**Paso 1: Media**
+```
+Media = (60 + 58 + 62 + 59 + 61 + 57 + 63 + 60 + 60) / 9
+Media = 540 / 9 = 60 puntos
+```
+
+**Paso 2: Diferencias al Cuadrado**
+
+| Ronda | PC | Diferencia (PC - Media) | Diferencia² |
+|-------|----|-----------------------|-------------|
+| 1 | 60 | 60 - 60 = 0 | 0² = 0 |
+| 2 | 58 | 58 - 60 = -2 | (-2)² = 4 |
+| 3 | 62 | 62 - 60 = 2 | 2² = 4 |
+| 4 | 59 | 59 - 60 = -1 | (-1)² = 1 |
+| 5 | 61 | 61 - 60 = 1 | 1² = 1 |
+| 6 | 57 | 57 - 60 = -3 | (-3)² = 9 |
+| 7 | 63 | 63 - 60 = 3 | 3² = 9 |
+| 8 | 60 | 60 - 60 = 0 | 0² = 0 |
+| 9 | 60 | 60 - 60 = 0 | 0² = 0 |
+
+**Suma de diferencias²:** 0 + 4 + 4 + 1 + 1 + 9 + 9 + 0 + 0 = **28**
+
+**Paso 3: Varianza**
+```
+Varianza = 28 / (9 - 1) = 28 / 8 = 3.5
+```
+
+**Paso 4: Desviación Estándar**
+```
+Desviación Estándar = √(3.5) = 1.87 puntos
 ```
 
 #### **Cálculo IED:**
@@ -84,13 +154,13 @@ IED_A = (135 / 675) × 100 = 20.0%
 
 #### **Cálculo ICD:**
 ```
-ICD_A = (1 - 2.06/60) × 100
-ICD_A = (1 - 0.034) × 100 = 96.6%
+ICD_A = (1 - 1.87/60) × 100
+ICD_A = (1 - 0.0312) × 100 = 96.88%
 ```
 
 #### **Perfil Táctico:**
 - **IED: +20.0%** → Excelente eficiencia defensiva
-- **ICD: 96.6%** → Extremadamente consistente
+- **ICD: 96.88%** → Extremadamente consistente
 - **Clasificación**: **MURO CONFIABLE**
 
 ---
@@ -186,7 +256,7 @@ ICD_D = (1 - 0.320) × 100 = 68.0%
 
 | Jugador | PC Total | IED | ICD | Perfil Defensivo | Recomendación Táctica |
 |---------|----------|-----|-----|------------------|----------------------|
-| **A** | 540 | **+20.0%** | **96.6%** | Muro Confiable | Ideal para finales cerrados |
+| **A** | 540 | **+20.0%** | **96.88%** | Muro Confiable | Ideal para finales cerrados |
 | **B** | 675 | **0.0%** | **96.9%** | Defensivo Estable | Comodín versátil |
 | **C** | 810 | **-20.0%** | **85.0%** | Gladiador Predecible | Pareja con defensivo sólido |
 | **D** | 675 | **0.0%** | **68.0%** | Comodín Impredecible | Alto riesgo/alta recompensa |
@@ -299,7 +369,7 @@ Valor: Ideal para torneos de eliminación directa
 
 | Pos | Jugador | EFF | V | D | PF | PC | **IED** | **ICD** | Perfil |
 |-----|---------|-----|---|---|----|----|---------|---------|--------|
-| 1 | García | 85.2 | 8 | 1 | 950 | 540 | **+20.0%** | **96.6%** | Completo |
+| 1 | García | 85.2 | 8 | 1 | 950 | 540 | **+20.0%** | **96.88%** | Completo |
 | 2 | López | 82.1 | 7 | 2 | 920 | 580 | **+14.1%** | **91.2%** | Equilibrado |
 | 3 | Martín | 79.8 | 8 | 1 | 1050| 810 | **-20.0%** | **85.0%** | Ofensivo |
 | 4 | Pérez | 76.5 | 6 | 3 | 840 | 620 | **+8.1%** | **88.5%** | Defensivo |
@@ -308,7 +378,7 @@ Valor: Ideal para torneos de eliminación directa
 
 | Jugador | IAR | IED | ICD | Clasificación Defensiva |
 |---------|-----|-----|-----|-----------------------|
-| García | 108% | +20.0% | 96.6% | **Elite Defensivo** |
+| García | 108% | +20.0% | 96.88% | **Elite Defensivo** |
 | López | 104% | +14.1% | 91.2% | **Sólido** |
 | Martín | 119% | -20.0% | 85.0% | **Ofensivo Puro** |
 | Pérez | 95% | +8.1% | 88.5% | **Especialista Defensivo** |
@@ -373,8 +443,9 @@ Los índices **IED e ICD representan una innovación significativa** en la evalu
 
 ## 📅 **Información del Documento**
 
-**Versión**: 1.0 Completo  
+**Versión**: 1.1 Corregido  
 **Fecha**: Junio 2025  
 **Estado**: Listo para implementación  
 **Índices presentados**: IED (Eficiencia Defensiva) + ICD (Consistencia Defensiva)  
-**Aplicación**: Dominó profesional internacional en parejas
+**Aplicación**: Dominó profesional internacional en parejas  
+**Corrección principal**: Cálculo detallado y corregido de desviación estándar
