@@ -49,4 +49,17 @@ Esta tabla está diseñada para torneos oficiales, de élite e internacionales, 
 
 ---
 
+## ⚖️ Criterios de Desempate (Orden de Prioridad)
+1. **Partidas Ganadas (PG)**.  
+2. **Efectividad (Eff)**.  
+4. **μ Buchholz**.  
+4. **IDN**.  
+3. **Diferencia de Puntos (Diff)** (`PF - PC`).  
+4. **Puntos a Favor (PF)**.  
+4. **IAR**.  
+4. **AVG**.  
+4. **PF**.  
+5. **Enfrentamiento Directo por ELO** (mayor ELO inicial, previo al torneo).  
+
+
 > **Recomendación:** Puedes adaptar el formato y agregar colores o iconos para destacar posiciones, mejores rendimientos o líderes en cada índice.
