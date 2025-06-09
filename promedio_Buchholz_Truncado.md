@@ -1,138 +1,147 @@
-# Fórmula Final y Optimizada: Promedio de Buchholz Truncado Final (PBT_final)
+# Fórmula Buchholz Truncado para Torneos de Dominó Profesional (TBz)
 
-    # 🏅 Método PBT Recomendado (TBz)
+## 🎯 Objetivo
 
-El sistema Buchholz es un método clásico de desempate en torneos suizos o ligas. Evalúa la "fuerza" de los oponentes que enfrentó cada jugador, sumando las partidas ganadas (PG) de todos sus rivales. El **Truncado Buchholz (TBz)** mejora este sistema al excluir el puntaje más bajo de los oponentes (evitando que un rival muy débil distorsione el cálculo). En algunos sistemas se excluye también el mayor, pero aquí solo se elimina el menor para simplificar.
-
-Para cada jugador participante en el torneo, el PBT_final se calcula de la siguiente manera:
+El sistema Buchholz Truncado (TBz) mide la fuerza de los oponentes que enfrentó cada jugador durante un torneo. Evalúa la "dureza" de los rivales sumando las partidas ganadas (PG) de todos sus oponentes y excluyendo el puntaje más bajo para evitar distorsiones por rivales débiles.
 
 ---
 
-## Paso 1: Recopilar Datos de Oponentes
+## 📋 Definiciones
 
-1.  Sea **N** el número total de oponentes *únicos* diferentes que el jugador ha enfrentado a lo largo del torneo.
-2.  Obtener la lista de las **Partidas Ganadas (PG)** acumuladas en el torneo por cada uno de estos N oponentes únicos.
-    *   `Lista_PG_Oponentes = [PG_op1, PG_op2, ..., PG_opN]`
-
----
-
-## Paso 2: Calcular PBT_final según el valor de N
-
-Se aplicará uno de los siguientes tres casos, dependiendo del valor de N:
-
-### CASO A: Si N = 0
-   *(El jugador no enfrentó oponentes únicos, por ejemplo, solo tuvo byes o no jugó ninguna partida).*
-
-   **PBT_final = 0**
-
-### CASO B: Si N = 1
-   *(El jugador enfrentó a un solo oponente único).*
-
-   **PBT_final = PG_op1 × 10**
-
-   Donde:
-   *   `PG_op1` = Total de Partidas Ganadas del único oponente enfrentado.
-
-### CASO C: Si N >= 2
-   *(El jugador enfrentó a dos o más oponentes únicos).*
-
-   a.  **Truncamiento:**
-       De la `Lista_PG_Oponentes`, se identifica y elimina el valor de Partidas Ganadas (PG) más bajo. Si varios oponentes comparten el mismo PG más bajo, solo se elimina la cuenta de uno de ellos.
-
-   b.  **Suma de PG Truncados (Suma_PGT):**
-       Se suman los PG de los `N-1` oponentes restantes en la lista truncada.
+- **PG**: Partidas Ganadas acumuladas por un jugador en el torneo
+- **N**: Número total de oponentes únicos diferentes que enfrentó el jugador
+- **Lista_PG_Oponentes**: Lista con los PG de todos los oponentes únicos enfrentados
+- **TBz**: Valor Buchholz Truncado calculado
 
 ---
 
-## Resumen del Flujo Lógico para el Cálculo:
+## 🧮 Procedimiento de Cálculo
 
-1.  Determinar **N** (número de oponentes únicos).
-2.  Si **N = 0**, entonces **PBT_final = 0**.
-3.  Si **N = 1**, entonces **PBT_final = (PG del único oponente) × 10**.
-4.  Si **N >= 2**, entonces:
-    *   ver siguiente sección
+### Paso 1: Recopilar Datos de Oponentes
 
----
+1. Identificar todos los oponentes únicos que enfrentó el jugador durante el torneo
+2. Obtener el total de Partidas Ganadas (PG) de cada oponente único
+3. Crear la `Lista_PG_Oponentes = [PG_op1, PG_op2, ..., PG_opN]`
+4. Contar el número total de oponentes únicos: **N**
 
-## 🧮 Cálculo paso a paso
+### Paso 2: Aplicar Fórmula según Casos
 
-### 1. **TBz crudo**
+#### CASO A: N = 0
+*(El jugador no enfrentó oponentes únicos)*
 
-Para cada jugador:
-- Suma los PG de todos sus oponentes.
-- Resta el valor mínimo de esa lista (el oponente con menos PG).
+```
+TBz = 0
+```
 
-\[
-TBz_crudo = ∑ PG_oponentes - min(PG_oponentes)
-\]
+#### CASO B: N = 1  
+*(El jugador enfrentó a un solo oponente único)*
 
-> **Nota:**  
-> En algunos métodos, el TBz se escala (opcional) y se promedia dividiendo entre N-1, donde N es el número de oponentes, pero el método estándar recomendado es simplemente la suma truncada.
+```
+TBz = PG_oponente
+```
 
----
+#### CASO C: N ≥ 2
+*(El jugador enfrentó a dos o más oponentes únicos)*
 
-## 📝 Ejemplo usando listas de la Simulación 1
+1. **Identificar el mínimo**: Encontrar el menor valor en `Lista_PG_Oponentes`
+2. **Truncar**: Eliminar una instancia del valor mínimo de la lista
+3. **Sumar**: Calcular la suma de los valores restantes
 
-- **Jugador A:** Oponentes PG: `[5, 5, 4, 4, 3, 3, 2]`  
-  Suma = 26, Mínimo = 2  
-  **TBz_A_crudo = 26 - 2 = 24**
-
-- **Jugador B:** Oponentes PG: `[5, 4, 4, 3, 3, 2, 1]`  
-  Suma = 22, Mínimo = 1  
-  **TBz_B_crudo = 22 - 1 = 21**
-
-- **Jugador C:** Oponentes PG: `[4, 3, 2, 2, 1, 1, 0]`  
-  Suma = 13, Mínimo = 0  
-  **TBz_C_crudo = 13 - 0 = 13**
-
-- **Jugador D:** Oponentes PG: `[2, 1, 1, 0, 0, 0, 0]`  
-  Suma = 4, Mínimo = 0  
-  **TBz_D_crudo = 4 - 0 = 4**
+```
+TBz = Σ(Lista_PG_Oponentes) - min(Lista_PG_Oponentes)
+```
 
 ---
 
-## ⚖️ Normalización Min-Max de TBz_crudo
+## 📊 Normalización (Opcional)
 
-Para comparar y visualizar el desempeño relativo, se recomienda **normalizar** los valores TBz_crudo al rango [0, 100] usando la siguiente fórmula:
+Para comparar jugadores de diferentes torneos o visualizar el desempeño relativo:
 
-\[
-TBz_norm = (TBz_crudo - TBz_min) / Rango_TBz * 100
-\]
+```
+TBz_normalizado = ((TBz - TBz_min_torneo) / (TBz_max_torneo - TBz_min_torneo)) × 100
+```
 
 Donde:
-- \(TBz_min\): El menor TBz_crudo del grupo.
-- \(TBz_max\): El mayor TBz_crudo del grupo.
-- \(Rango_TBz\) = (TBz_max - TBz_min)
+- `TBz_min_torneo`: Menor TBz del torneo
+- `TBz_max_torneo`: Mayor TBz del torneo
 
-### **Ejemplo con los datos anteriores:**
-
-- **Lista_TBz_crudos_Sim2:** `[24, 21, 13, 4]`
-- **TBz_min:** `4`
-- **TBz_max:** `24`
-- **Rango_TBz:** `24 - 4 = 20`
-
-\[
-A_PBT_norm = (24 - 4) / 20 * 100 = 100%
-
-B_PBT_norm = (21 - 4) / 20 * 100 = 85%
-
-C_PBT_norm = (13 - 4) / 20 * 100 = 45%
-
-D_PBT_norm = (4 - 4) / 20 * 100 = 0%
-\]
+**Resultado**: Porcentaje entre 0% y 100%
 
 ---
 
-## 📌 Resumen del procedimiento
+## 🔢 Ejemplo Práctico
 
-1. Suma los PG de todos los oponentes de un jugador.
-2. Excluye el menor valor de esa lista.
-3. Obtén el **TBz crudo**.
-4. Normaliza todos los TBz crudos usando la fórmula min-max para obtener un porcentaje comparativo.
+**Datos del torneo:**
+- Jugador A enfrentó oponentes con PG: `[5, 5, 4, 4, 3, 3, 2]`
+- Jugador B enfrentó oponentes con PG: `[5, 4, 4, 3, 3, 2, 1]`  
+- Jugador C enfrentó oponentes con PG: `[4, 3, 2, 2, 1, 1, 0]`
 
-**Ventajas:**  
-- Refleja la "dureza" real de los rivales enfrentados.
-- Evita distorsiones por oponentes débiles.
-- Permite comparar el desempeño relativo de jugadores aunque hayan enfrentado rivales distintos.
+**Cálculos:**
+
+**Jugador A** (N = 7):
+- Suma total: 5+5+4+4+3+3+2 = 26
+- Mínimo: 2
+- **TBz_A = 26 - 2 = 24**
+
+**Jugador B** (N = 7):
+- Suma total: 5+4+4+3+3+2+1 = 22
+- Mínimo: 1  
+- **TBz_B = 22 - 1 = 21**
+
+**Jugador C** (N = 7):
+- Suma total: 4+3+2+2+1+1+0 = 13
+- Mínimo: 0
+- **TBz_C = 13 - 0 = 13**
+
+**Normalización:**
+- TBz_min = 13, TBz_max = 24, Rango = 11
+
+- A_normalizado = (24-13)/11 × 100 = **100%**
+- B_normalizado = (21-13)/11 × 100 = **73%**
+- C_normalizado = (13-13)/11 × 100 = **0%**
 
 ---
+
+## ⚙️ Implementación Paso a Paso
+
+### 1. Preparar Datos
+```
+Para cada jugador:
+  - Crear lista vacía: oponentes_únicos = []
+  - Revisar cada ronda jugada
+  - Agregar PG de oponentes únicos a la lista
+```
+
+### 2. Ejecutar Cálculo
+```
+N = longitud(oponentes_únicos)
+
+Si N = 0:
+    TBz = 0
+Si N = 1:
+    TBz = oponentes_únicos[0]  
+Si N ≥ 2:
+    suma_total = suma(oponentes_únicos)
+    valor_mínimo = mínimo(oponentes_únicos)
+    TBz = suma_total - valor_mínimo
+```
+
+### 3. Normalizar (Opcional)
+```
+Para todo el torneo:
+  - TBz_min = mínimo(todos_los_TBz)
+  - TBz_max = máximo(todos_los_TBz)
+  - rango = TBz_max - TBz_min
+  
+Para cada jugador:
+  - TBz_norm = (TBz - TBz_min) / rango × 100
+```
+
+---
+
+## 🎮 Consideraciones para Dominó Profesional
+
+- En torneos con parejas rotativas, considerar a ambos oponentes de la pareja rival
+- Los byes no cuentan como oponentes (no incrementan N)
+- Todos los jugadores avanzan ronda por ronda simultáneamente
+- No existen empates en dominó profesional (máximo una mano de desempate)
