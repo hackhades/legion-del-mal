@@ -51,13 +51,14 @@ ELO = ELO + K * (S - E_eq) + Bono_Aplastante
    \[
    Brecha = ((Puntos Ganador - Puntos Perdedor) / Puntos Ganador) * 100
    \]
-   - **+3 ELO** → 100% (ej. 100-0).  
-   - **+2 ELO** → ≥90% (ej. 100-10).  
-   - **+1 ELO** → ≥80% (ej. 100-20).  
+   - **+2 ELO** → 100% (ej. 100-0).  
+   - **+1.50 ELO** → ≥90% (ej. 100-10).  
+   - **+0.75 ELO** → ≥80% (ej. 100-20).  
 
 **Ejemplo**:  
-- Ganador: 100-15 → Brecha = 85% → **+1 ELO**.  
-- Ganador: 84-16 → **No aplica** (no alcanzó 100 puntos).  
+- Ganador: 100-15 → Brecha = 85% → **+0.75 ELO**.  
+- Ganador: 99-16 → **No aplica** (aplastante pero no alcanzó el puntaje objetivo "100").
+- Todo torneo tiene un puntaje objetivo por partida (ej. 100/200 puntos).  
 
 ---
 
@@ -83,7 +84,7 @@ ELO = ELO + K * (S - E_eq) + Bono_Aplastante
 ### 1. **Abandono (Conducta Antideportiva)**
 - **Jugador que abandona**:  
   \[
-  ELO = ELO - 10 (Penalización fija)
+  ELO = ELO - 40 (Penalización fija)
   \]
 - **Equipo contrario**: Sin cambios en su ELO.  
 
@@ -102,8 +103,8 @@ ELO = ELO + K * (S - E_eq) + Bono_Aplastante
 | Factor K (intermedios)| 20 (1600-2000 ELO)                      |
 | Factor K (élite)      | 15 (>2000 ELO)                          |
 | Factor K (gran maestro)| 10 (>2200 ELO)                          |
-| Penalización abandono | -10 ELO                                  |
-| Bono aplastante       | +1/+2/+3 ELO (según brecha)             |
+| Penalización abandono | -40 ELO                                  |
+| Bono aplastante       | +0.75/+1.50/+2 ELO (según brecha)             |
 
 ---
 
@@ -114,16 +115,18 @@ ELO = ELO + K * (S - E_eq) + Bono_Aplastante
 - **S**: 1 por victoria.  
 - **Cálculos**:  
   1. (E_eq = 0.36) (36% de probabilidad).  
-  2. **Brecha%**: 85.71% → **+1 ELO**.  
+  2. **Brecha%**: 85.71% → **+0.75 ELO**.  
   3. **K-factor** 20 jugador activo y establecido.  
-  3. **ELO individual actual** 1500.  
+  4. **ELO individual actual** 1500.  
      \[
-     ELO = 1500 + 20 * (1 - 0.36) + 1 = 1513.8 ≈ 1514
+     ELO = 1500 + 20 * (1 - 0.36) + 0.75 = 1513.8 ≈ 1513.55
      \]
+  5. 1513.55 → ELO = 1514
 
 ---
 
 ## 📌 **Reglas de Oro**
-1. **Transparencia**: Todos los parámetros deben ser públicos.  
-2. **Consistencia**: Aplicar siempre las mismas reglas.  
-3. **Registro histórico**: Guardar datos de partidas y ELOs.  
+1. **Precisión** Visualmente se muestra el ELO redondeado (1514), pero logicamente el valor se conserva intacto (1513.55) para mantener la precisión en los cálculos futuros. 
+2. **Transparencia**: Todos los parámetros deben ser públicos.  
+3. **Consistencia**: Aplicar siempre las mismas reglas.  
+4. **Registro histórico**: Guardar datos de partidas y ELOs.  
