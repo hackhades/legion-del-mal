@@ -90,7 +90,10 @@ ELO = ELO + K * (S - E_eq) + Bono_Aplastante
 
 ### 2. **Inasistencia (Walkover)**
 - **Equipo presente**: Sin cambios.  
-- **Equipo ausente**: Sin cambios.  
+- **Equipo ausente**: Sin cambios.
+- **Judagor Ausente** 
+      - preinscripción paga: Sin cambios.   
+      - preinscripción sin pagar: penalización 5 puntos.   
 
 ---
 
