@@ -126,7 +126,7 @@ Si N ≥ 2:
     TBz = suma_total - valor_mínimo
 ```
 
-### 3. Normalizar (Opcional)
+### 3. Normalizar
 ```
 Para todo el torneo:
   - TBz_min = mínimo(todos_los_TBz)
