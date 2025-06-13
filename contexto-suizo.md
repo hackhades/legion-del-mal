@@ -185,7 +185,7 @@ El algoritmo obligatoriamente debe contemplar el siguiente escenario:
 
 ## Posibles Problemas: Efecto Cascada
 
-- Si una pareja líder en la tabla global no encuentra rivales, debe bajar hasta pirámide secundaria y este suceso distorsiona completamente el sistema suizo.
+- Si una pareja líder en PP no encuentra rivales, debe bajar hasta pirámide secundaria y este suceso distorsiona completamente el sistema suizo.
 - Crea "emparejamientos forzados" no competitivos.
 
 ---
