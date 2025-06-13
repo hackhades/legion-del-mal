@@ -46,7 +46,7 @@ Se sobreentiende que A1 y A2 tienen los mismos valores ya que fueron pareja y ha
 
 ## División en Pirámides
 
-Dividimos la lista total de jugadores en una primera mitad (PP) con los atletas con puntajes mas sobresalientes y estos a su vez se subdividen en una pirámide (PS), es decir, en 2 grupos:
+Dividimos la lista total de jugadores en una primera mitad (PP) con los atletas con puntajes mas sobresalientes y estos a su vez se subdividen entre lados (los lados de la piramide), es decir, en 2 grupos:
 
 - **Lista ganadores con mejor desempeño (Lado A):**  
   A1, A2, C1, C2, M1, M2, G1
