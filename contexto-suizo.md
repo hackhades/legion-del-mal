@@ -213,6 +213,8 @@ Pero dejando siempre claro que lo óptimo sería que el algoritmo funcionara sin
 
 Por último, las pirámides no se tratan sobre perdedores o ganadores de la ronda. En realidad, en cada ronda varía: nuestra base de datos ya contempla una tabla de clasificacion con las posiciones de los atletas enumeradas, de alli se toma la lista completa del torneo en forma descendente en base a sus índices WR, EFF entre otros mas, y a partir de dicho listado, ronda tras ronda, se divide y se forman dos nuevas pirámides. Es decir, te doy un ejemplo: el jugador A1 en la ronda 4 puede haber ganado tres veces consecutivas y haber perdido en la última ronda, y por haber perdido en la última ronda no quiere decir que automáticamente pasa a la pirámide secundaria, ya que por clasificación global es probable que aún vaya de líder a pesar de su única derrota; entonces debería estar en la primera pirámide e incluso como líder de todos aún, suponiendo que en la tabla general así se refleje.
 
+En referencia a los indices que influyen como criterio de desempate y demas indices que no hacen falta mencionar ni describir, se debe hacer enfasis en que el algoritmo suizo no debe evaluar dichos criterios, ya que no es su funcion, la funcion real que queremos es la de gestionar emparejamientos segun la esencia de la modalidad en si. En teoria el algoritmo recibe ya la lista ordenada con sus posiciones respectivas ronda tras ronda, para eso ya existe aparte en el sistema una tabla de clasificacion con los rankings.
+
 ---
 
 ## Cierre y Encargo a la IA
