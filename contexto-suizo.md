@@ -95,11 +95,11 @@ Y procedemos a crear las mesas junto con sus respectivos enfrentamientos:
 
 Nos sobraría la pareja **E2 – K2**, esto ocurre por la misma razón que tenemos mesas impares. Es probable que con mesas con un número par no ocurra y el ordenamiento sea más sencillo, lo que tú como IA debes comprobar con una simulación interna o mentalmente según sea tu preferencia. En este caso, al ser una pareja de la piramide principal quienes quedaron a la deriva, pues los vamos a desemparejar para luego emparejarlos sí o sí con los mejores integrantes de la piramide secundaria, del mismo modo los enfrentaremos también contra la pareja más fuerte del lado B de la piramide secundaria, para así respetar la esencia del sistema suizo, esto se debe lograr siempre y cuando compañeros y rivales no se hayan repetido en la ronda anterior.
 
-Luego aplicamos la misma dinámica que se utilizó con los ganadores para la lista de perdedores.
+Luego aplicamos la misma dinámica que se utilizó en PP para la PS tambien.
 
 ---
 
-## Emparejamiento de Perdedores
+## Emparejamiento de PS
 
 Lista total de la piramide secundaria ya ordenada por sus índices:  
 **L1, L2, F1, F2, J1, J2, H1, H2, N1, N2, D1, D2, B1, B2**
