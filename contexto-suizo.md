@@ -14,7 +14,7 @@ El sistema suizo tradicional se caracteriza por ordenar en una especie de pirami
 
 El administrador o anfitrión del torneo decidirá si la primera ronda se juega ordenando por ELO o aleatoriamente, pero en este algoritmo en específico no quiero tomar en cuenta el ELO aún. Partamos en que todos tienen nivel similar y por lo tanto en la primera ronda se emparejarán compañeros y rivales de manera aleatoria. Por lo que las parejas quedarían del siguiente modo:
 
-- **A1 – A2 vs B1 - B2**
+- **A1 - A2 vs B1 - B2**
 - **C1 - C2 vs D1 - D2**
 - **E1 - E2 vs F1 - F2**
 - **G1 - G2 vs H1 - H2**
@@ -36,11 +36,15 @@ Los ganadores de la primera ronda fueron:
 
 ## Criterios de Desempate y Ordenamiento
 
-Después que tabla de clasificacion aplica criterios de desempate con índices como win rate "WR2", efectividad "EFF" (fórmula compuesta que mide el dominio) y otros indices discriminatorios secundarios, el algoritmo recibe la lista ordenada en forma descendente con todos los atletas según su eficiencia y desempeño durante el torneo:
+Después que tabla de clasificacion aplica criterios de desempate con índices como win rate "WR2", efectividad "EFF" (fórmula compuesta que mide el dominio) y otros indices discriminatorios secundarios, el algoritmo recibe la lista completa ordenada en forma descendente con todos los atletas según su eficiencia y desempeño durante el torneo:
 
-- **A1, A2, C1, C2, M1, M2, G1, G2, I1, I2, E1, E2, K1, K2**
+- Algoritmo recibe lista completa:
+  **A1, A2, C1, C2, M1, M2, G1, G2, I1, I2, E1, E2, K1, K2, L1, L2, F1, F2, J1, J2, H1, H2, N1, N2, D1, D2, B1, B2**
 
-Se sobreentiende que A1 y A2 tienen los mismos valores ya que fueron pareja y han jugado apenas una ronda, por eso están empatados en primer lugar, el mismo ejemplo aplica para los demás también.
+- El algoritmo se encarga de dividir la lista en 2 piramides:
+  **A1, A2, C1, C2, M1, M2, G1, G2, I1, I2, E1, E2, K1, K2**
+
+Se sobreentiende que A1 y A2 tienen los mismos valores ya que fueron pareja y han jugado apenas una ronda, por eso están empatados en el primer lugar, el mismo ejemplo aplica para los demás también.
 
 ---
 
@@ -76,24 +80,24 @@ Ejemplo: En el lado A , comenzamos los emparejamientos de manera descendente, es
 
 ## Determinación de las Parejas de Cada Lado
 
-Antes de emparejar debemos definir cuántas parejas contendrá cada lado de la pirámide, sobretodo el primer lado, para ello dividimos el número total integrante del “lado A” entre 2, si el resultado es un número con decimales entonces restamos -0.50, para este caso el resultado de dividir 7 entre 2 nos dio un valor con decimales "3.50", entonces procedemos restando los -0.50 para obtener un total de 3 parejas para este “lado A”.
+Antes de emparejar debemos definir cuántas parejas contendrá cada lado de la pirámide, sobretodo el primer lado, para ello dividimos el número total integrante del “lado A” entre 2, si el resultado es un número con decimales y no un entero entonces restamos -0.50, para este caso el resultado de dividir 7 entre 2 nos dio un valor con decimales "3.50", entonces procedemos restando los -0.50 para obtener un total de 3 parejas para este “lado A”.
 
-Al ser 28 atletas encontramos el primer inconveniente, si dividimos 28/4 nos dará un resultado de 7 lo que quiere decir que son 7 mesas, un número impar de mesas, por lo tanto en el ordenamiento debemos ser cuidadosos a la hora de organizar, y debemos hallar alguna fórmula como por ejemplo emparejar al penultimo del Lado A con el primer lugar del Lado B y al ultimo del Lado A con el sgundo del lado B,  En cambio, cuando las mesas son pares por ejemplo 8 mesas, se facilita el ordentamiento.
+Al ser 28 atletas encontramos el primer inconveniente, si dividimos 28/4 nos dará un resultado de 7 lo que quiere decir que son 7 mesas, un número impar de mesas, por lo tanto en el ordenamiento debemos ser cuidadosos a la hora de organizar, y debemos hallar alguna fórmula como por ejemplo los sobrantes del Lado A pasan a ser lideres en el Lado B. En cambio, cuando las mesas son pares por ejemplo 8 mesas, se facilita el ordenamiento gracias a la paridad.
 
 ---
 
-## Emparejamiento de Ganadores
+## Emparejamiento de PP
 
-Procedemos a emparejar ganadores:
+Procedemos a emparejar PP:
 
-- **Lado A PP:** A1 – C1, A2 – C2, M1 – G1. (cumplimos con el criterio de tener 3 parejas en el Lado A)
-- **Lado B (Segundo lote de la pirámide principal):** M2 - I1, G2 – I2, E1 – K1, E2 – K2
+- **Lado A PP:** A1 – C1, A2 – C2, M1 – G1 (cumplimos con el criterio de tener 3 parejas en el Lado A)
+- **Lado B PP:** M2 – G2, I1 – E1, I2 – E2, K1 – K2 (eventualidad inesperada con K1 y K2 que explicaremos mas adelante como caso excepcional)
 
 Y procedemos a crear las mesas cerrando los lados de la piramide generando asi los siguientes enfrentamientos:
 
-- **A1 – C1 vs M2 - I1**
-- **A2 – C2 vs G2 – I2**
-- **M1 – G1 vs E1 – K1**
+- **A1 – C1 vs M2 - G2**
+- **A2 – C2 vs I1 – E1**
+- **M1 – G1 vs I2 – K1**
 
 Nos sobraría la pareja **E2 – K2**, esto ocurre por la misma razón que tenemos mesas impares. Es probable que con mesas con un número par no ocurra y el ordenamiento sea más sencillo. En este caso, al ser una pareja de la piramide principal quienes quedaron a la deriva, pues los vamos a desemparejar para luego emparejarlos sí o sí con los mejores integrantes de la piramide secundaria, del mismo modo los enfrentaremos también contra la pareja más fuerte del lado B de la piramide secundaria, para así respetar la esencia del sistema suizo, esto se debe lograr siempre y cuando compañeros y rivales no se hayan repetido en la ronda anterior o ronda previa a la anterior.
 
@@ -118,7 +122,7 @@ Emparejamos del mismo modo como se hizo en PP, por lo tanto obtenemos:
 **Lado A PS:** E2 – L1, L2 – F1, F2 – J1, J2 – H1
 **Lado B PS:** K2 – H2, N1 – D1, N2 – D2, B1 – B2 (eventualidad inesperada)
 
-**Caso Excepcional:** Despues del ordenamiento B1 y B2 quedaron como compañeros pero esto rompe la condicionales ya que en ronda anterior fueron pareja y por lo tanto NO pueden volver a coincidir, en una situacion asi el algoritmo debe ser capaz de identificar el problema y buscar a la pareja mas contigua (de nivel similar) y realizar un reordenamiento, la pareja de nivel mas similar en este caso seria N2 y D2, invertimos de manera reciproca la posicion de los atletas mas contiguos en cuestion quienes serian (D2 y B1), obteniendo el siguiente fragmento ordenado "N2, B1, D2, B2" , aplicamos los condicionales respectivas para confirmar que los emparejamientos si sean posibles, si condicionales se rompen de nuevo entonces repetimos ciclo otra vez con la pareja mas contigua de derecha a izquierda (orden ascendente) sino finalmente obtenemos el lado B:
+**Caso Excepcional:** Despues del ordenamiento B1 y B2 quedaron como compañeros pero esto rompe la condicionales ya que en ronda anterior fueron pareja y por lo tanto NO pueden volver a coincidir, en una situacion asi el algoritmo debe ser capaz de identificar el problema y buscar a la pareja mas contigua (de nivel similar) y realizar un reordenamiento, la pareja de nivel mas similar en este caso seria N2 y D2, invertimos de manera reciproca la posicion de los atletas mas contiguos en cuestion quienes serian (D2 y B1), obteniendo el siguiente fragmento ordenado "N2, B1, D2, B2" , aplicamos los condicionales respectivas para confirmar que los emparejamientos si sean posibles, si condicionales se rompen de nuevo entonces repetimos ciclo otra vez con la pareja mas contigua de derecha a izquierda (forma ascendente) sino finalmente obtenemos el lado B:
 **Lado B PS:** K2 – H2, N1 – D1, N2 – B1, D2 – B2
 
 Cerramos los lados de la pirámide y creamos las mesas con sus respectivos enfrentamientos:
