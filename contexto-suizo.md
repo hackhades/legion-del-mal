@@ -41,7 +41,7 @@ Después que tabla de clasificacion aplica criterios de desempate con índices c
 - Algoritmo recibe lista completa:
   **A1, A2, C1, C2, M1, M2, G1, G2, I1, I2, E1, E2, K1, K2, L1, L2, F1, F2, J1, J2, H1, H2, N1, N2, D1, D2, B1, B2**
 
-- El algoritmo se encarga de dividir la lista en 2 piramides:
+- El algoritmo se encarga de dividir la lista en 2 piramides, obtenemos primera piramide, PP:
   **A1, A2, C1, C2, M1, M2, G1, G2, I1, I2, E1, E2, K1, K2**
 
 Se sobreentiende que A1 y A2 tienen los mismos valores ya que fueron pareja y han jugado apenas una ronda, por eso están empatados en el primer lugar, el mismo ejemplo aplica para los demás también.
@@ -82,7 +82,7 @@ Ejemplo: En el lado A , comenzamos los emparejamientos de manera descendente, es
 
 Antes de emparejar debemos definir cuántas parejas contendrá cada lado de la pirámide, sobretodo el primer lado, para ello dividimos el número total integrante del “lado A” entre 2, si el resultado es un número con decimales y no un entero entonces restamos -0.50, para este caso el resultado de dividir 7 entre 2 nos dio un valor con decimales "3.50", entonces procedemos restando los -0.50 para obtener un total de 3 parejas para este “lado A”.
 
-Al ser 28 atletas encontramos el primer inconveniente, si dividimos 28/4 nos dará un resultado de 7 lo que quiere decir que son 7 mesas, un número impar de mesas, por lo tanto en el ordenamiento debemos ser cuidadosos a la hora de organizar, y debemos hallar alguna fórmula como por ejemplo los sobrantes del Lado A pasan a ser lideres en el Lado B. En cambio, cuando las mesas son pares por ejemplo 8 mesas, se facilita el ordenamiento gracias a la paridad.
+Al ser 28 atletas encontramos el primer inconveniente, si dividimos 28/4 nos dará un resultado de 7 lo que quiere decir que son 7 mesas, un número impar de mesas, por lo tanto en el ordenamiento debemos ser cuidadosos a la hora de organizar, y debemos hallar alguna fórmula o resolucion para que los sobrantes del Lado A pasen a ser lideres en el Lado B. En cambio, cuando las mesas son pares por ejemplo 8 mesas, se facilita el ordenamiento gracias a la paridad.
 
 ---
 
@@ -119,10 +119,12 @@ Recordemos que tenemos en lista de espera a **E2** y **K2**, quienes por lógica
 - **Lado B PS:** K2, H2, N1, N2, D1, D2, B1, B2
 
 Emparejamos del mismo modo como se hizo en PP, por lo tanto obtenemos:  
-**Lado A PS:** E2 – L1, L2 – F1, F2 – J1, J2 – H1
+**Lado A PS:** E2 – L1, L2 – F1, F2 – J1, J2 – H1 
+
 **Lado B PS:** K2 – H2, N1 – D1, N2 – D2, B1 – B2 (eventualidad inesperada)
 
 **Caso Excepcional:** Despues del ordenamiento B1 y B2 quedaron como compañeros pero esto rompe la condicionales ya que en ronda anterior fueron pareja y por lo tanto NO pueden volver a coincidir, en una situacion asi el algoritmo debe ser capaz de identificar el problema y buscar a la pareja mas contigua (de nivel similar) y realizar un reordenamiento, la pareja de nivel mas similar en este caso seria N2 y D2, invertimos de manera reciproca la posicion de los atletas mas contiguos en cuestion quienes serian (D2 y B1), obteniendo el siguiente fragmento ordenado "N2, B1, D2, B2" , aplicamos los condicionales respectivas para confirmar que los emparejamientos si sean posibles, si condicionales se rompen de nuevo entonces repetimos ciclo otra vez con la pareja mas contigua de derecha a izquierda (forma ascendente) sino finalmente obtenemos el lado B:
+
 **Lado B PS:** K2 – H2, N1 – D1, N2 – B1, D2 – B2
 
 Cerramos los lados de la pirámide y creamos las mesas con sus respectivos enfrentamientos:
@@ -138,8 +140,8 @@ Cerramos los lados de la pirámide y creamos las mesas con sus respectivos enfre
 
 - ¿E2 fue compañero de L1? = No (su compañero fue E1)  
 
-- ¿E2 fue rival de k2 o H2? = No (sus rivales fueron F1 y F2)
-  Ejemplo de Caso contrario: Indistintamente que F1 o F2 tuvieran nueva pareja cada uno (Ejemplo F1 - K2), si llegasen a confrontarse el valor de la condicional seria "si" ya que no necesariamente F1 y F2 deben estar juntos para activarse y por ende se tendria que saltar y buscar otra pareja adecuada como rivales para E2. 
+- ¿E2 fue rival de k2 o H2? = No (sus rivales fueron F1 y F2).
+  `Ejemplo de Caso contrario: Indistintamente que F1 o F2 tuvieran nueva pareja cada uno (Ejemplo F1 - K2), si llegasen a confrontarse el valor de la condicional seria "si" ya que no necesariamente F1 y F2 deben estar juntos para activarse y por ende se tendria que saltar y buscar otra pareja adecuada como rivales para E2.` 
 
 → Entonces seguimos adelante, ejecutamos.
 
