@@ -6,7 +6,7 @@
 
 En el sistema de dominó profesional con SvelteKit y Svelte 5 que estoy desarrollando sobre gestión de torneos y manejo de rankings, la modalidad más utilizada es el sistema suizo. Los torneos a nivel internacional con ELO se juegan siempre en parejas rotativas, es decir, la clasificación es individual pero en cada ronda se empareja con un compañero nuevo, lo mismo sucede con los rivales. Necesito que me ayudes a desarrollar el algoritmo, pero no en código de programación todavía, ya que la idea es entenderlo primero antes de plasmarlo en código, sobretodo porque el sistema será auditado y debe conservar su naturaleza en lenguaje humano para que los auditores de la federación puedan aprobarlo. 
 
-El sistema suizo se caracteriza por ordenar en pirámides, pero como el dominó profesional e internacional se juega en parejas, supongo que tendremos que manejar 2 pirámides, pirámide principal (PP) y pirámide secundaria (PS). En todo torneo élite de esta categoría la cantidad ideal de participantes suele ser 28 atletas como mínimo. Entonces tratemos de crear un esquema sobre cómo se jugaría ronda por ronda y como prioridad el algoritmo o esquema debe ser escalable de tal modo que conserve el mismo patrón para cuando haya una mayor participación de atletas.
+El sistema suizo tradicional se caracteriza por ordenar en una especie de piramide, pero como el dominó profesional e internacional se juega en parejas, supongo que tendremos que manejar 2 pirámides, pirámide principal (PP) y pirámide secundaria (PS). En todo torneo élite de esta categoría la cantidad ideal de participantes suele ser 28 atletas como mínimo. Entonces tratemos de crear un esquema sobre cómo se jugaría ronda por ronda y como prioridad el algoritmo o esquema debe ser escalable de tal modo que conserve el mismo patrón para cuando haya una mayor participación de atletas.
 
 ---
 
@@ -36,15 +36,15 @@ Los ganadores de la primera ronda fueron:
 
 ## Criterios de Desempate y Ordenamiento
 
-Después de aplicar criterios de desempate con índices como win rate "WR2", efectividad "EFF" (fórmula compuesta que mide el dominio) y otros indices discriminatorios secundarios, ordenamos la lista de ganadores según sus índices de desempeño en forma descendente:
+Después que tabla de clasificacion aplica criterios de desempate con índices como win rate "WR2", efectividad "EFF" (fórmula compuesta que mide el dominio) y otros indices discriminatorios secundarios, el algoritmo recibe la lista ordenada en forma descendente con todos los atletas según su eficiencia y desempeño durante el torneo:
 
 - **A1, A2, C1, C2, M1, M2, G1, G2, I1, I2, E1, E2, K1, K2**
 
-Se sobreentiende que A1 y A2 tienen los mismos valores ya que fueron pareja y han jugado apenas una ronda, por eso están empatados, el mismo ejemplo aplica para los demás también.
+Se sobreentiende que A1 y A2 tienen los mismos valores ya que fueron pareja y han jugado apenas una ronda, por eso están empatados en primer lugar, el mismo ejemplo aplica para los demás también.
 
 ---
 
-## División en Pirámides
+## Conformacion de la Pirámide
 
 Dividimos la lista total de jugadores en una primera mitad (PP) con los atletas con puntajes mas sobresalientes y estos a su vez se subdividen entre lados (los lados de la piramide), es decir, en 2 grupos:
 
