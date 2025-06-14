@@ -168,6 +168,8 @@ El algoritmo obligatoriamente debe contemplar el siguiente escenario:
 - En caso de inasistencia antes del torneo o abandono durante el desarrollo del mismo, entonces utilizar "byes":  
   Si hay un número impar de parejas, asignar un bye (descanso) a todos los atletas involucrados con menor desempeño que no logren completar una mesa completa de 4 integrantes.
 
+  El algoritmo no se debe preocupar por el puntaje que recibiran los jugadores "BYE" si acaso representarlos con algun tipo de bandera de tal modo que el resto del sistema lo pueda interpretar y aplicar los puntajes correspondientes, que por lo general es el 50% del puntaje objetivo.
+  
 ---
 
 ## Propuesta para Reglas 1 y 2 según Categoría
@@ -227,11 +229,11 @@ En referencia a los indices que influyen como criterio de desempate y demas indi
 
 Dicho esto, como la IA con mayor potencial del mercado que eres tú, por supuesto debes profundizar con rigurosidad y desarrollar el algoritmo por mí, justo esa es la idea, por eso he tratado de darte el contexto necesario. El algoritmo que tú me generes debe tener la lógica y coherencia desde la ronda 1 hasta la ronda 9. No me decepciones ya que el algoritmo será auditado y no quiero hacer el ridículo por tu culpa.
 
-Con el algoritmo ya finalizado debes hacer una simulación interna para tu propio consumo, no a nivel visual, ni generar archivos extras, la simulación debe ser mentalmente para ti mismo como IA para que luego me indiques si se presentaron vicisitudes durante la simulación y sobre cuáles serían los posibles retos inesperados a presentarse, ya que necesitamos prever problemas para los debidos mantenimientos preventivos y no correctivos. Este algoritmo debe ser versátil y adaptable para poder superar cualquier prueba con rotundo éxito.
+Con el algoritmo ya finalizado debes hacer doble simulación interna para tu propio consumo, no a nivel visual, ni generar archivos extras, la simulación debe ser mentalmente para ti mismo como IA para que luego me indiques si se presentaron vicisitudes durante la simulación y sobre cuáles serían los posibles retos inesperados a presentarse, ya que necesitamos prever problemas para los debidos mantenimientos preventivos y no correctivos. Este algoritmo debe ser versátil y adaptable para poder superar cualquier prueba con rotundo éxito. Yo no necesito ver las simulaciones, la doble simulacion sera una sin jugadores "Bye" y otra simulacion si con un jugador con estatus BYE.
 
 Debes generar 2 archivos, uno con el algoritmo en pseudocódigo tecnico y otro archivo en formato markdown explicando dicho algoritmo en un lenguaje más natural para humanos. La creación de 2 archivos es opcional, al menos que quieras crear todo dentro de un solo archivo. ¡Sorpréndeme!
 
-Importante: NO generar ningun archivo hasta que la simulacion haya culminado con exito, repetir simulaciones necesarias hasta lograr el exito esperado que concluya que nuestro algoritmo es optimo, luego de ello si generar el o los archivo(s).
+Importante: NO generar ningun archivo hasta que la doble simulacion haya culminado con exito, repetir simulaciones necesarias hasta lograr el exito esperado y comprobar que nuestro algoritmo es optimo, luego de ello si generar el o los archivo(s).
 
 ---
 
