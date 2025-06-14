@@ -138,15 +138,16 @@ Cerramos los lados de la pirámide y creamos las mesas con sus respectivos enfre
 
 - ¿E2 fue compañero de L1? = No (su compañero fue E1)  
 
-- ¿E2 fue rival de H2 y k2? = No (sus rivales fueron F1 y F2)
-  
+- ¿E2 fue rival de k2 o H2? = No (sus rivales fueron F1 y F2)
+  Ejemplo de Caso contrario: Indistintamente que F1 o F2 tuvieran nueva pareja cada uno (Ejemplo F1 - K2), si llegasen a confrontarse el valor de la condicional seria "si" ya que no necesariamente F1 y F2 deben estar juntos para activarse y por ende se tendria que saltar y buscar otra pareja adecuada como rivales para E2. 
+
 → Entonces seguimos adelante, ejecutamos.
 
 ---
 
 ## Enumeración de Mesas
 
-Finalmente ya tenemos nuestras mesas listas para la ronda 2, dichas mesas deben ser enumeradas por el algoritmo de manera ascendente en donde siempre la pareja líder de la pirámide con mejor desempeño ocupará la “Mesa 1”, eso es regla elemental en todos los torneos profesionales de dominó:
+Finalmente ya tenemos nuestras mesas listas para la ronda 2, dichas mesas deben ser enumeradas por el algoritmo de manera ascendente en donde siempre el atleta líder de la PP con mejor desempeño ocupará la “Mesa 1”, esto es una norma elemental en todos los torneos profesionales de dominó:
 
 - **Mesa 1:** A1 – C1 vs M2 - I1
 - **Mesa 2:** A2 – C2 vs G2 – I2
@@ -161,8 +162,8 @@ Finalmente ya tenemos nuestras mesas listas para la ronda 2, dichas mesas deben 
 ## Manejo de Inasistencias y "Byes"
 
 El algoritmo obligatoriamente debe contemplar el siguiente escenario:
-- En caso de inasistencia antes del torneo o abandono durante el desarrollo, entonces utilizar "byes":  
-  Si hay un número impar de parejas, asignar un bye (descanso) a los atletas con menor desempeño que no logren completar una mesa completa de 4 integrantes.
+- En caso de inasistencia antes del torneo o abandono durante el desarrollo del mismo, entonces utilizar "byes":  
+  Si hay un número impar de parejas, asignar un bye (descanso) a todos los atletas involucrados con menor desempeño que no logren completar una mesa completa de 4 integrantes.
 
 ---
 
@@ -205,7 +206,7 @@ Si el algoritmo requiere ajustes, entonces ¿cuáles ajustes son y cómo impleme
 En caso extremo que el algoritmo no logre encontrar pareja válida, lo idóneo es que no se pierda la base y estructura del “sistema suizo”. Por ende, se podría estudiar la posibilidad de aplicar mandamientos excepcionales tales como:
 
 - **Primero:** Realizar una transfusión de atletas entre pirámides, los últimos lugares de la pirámide principal intercambiados con los primeros lugares de la segunda pirámide. Se debe ser estrictamente selectivo y excluyente para no generar distorsiones.
-- **Segundo:** Con respecto a las reglas 1 y 2, se podría aplicar una relajación progresiva en cuanto a las ventanas, como por ejemplo disminuir una ronda; es decir, en el escenario de “categoría estándar” se podría aplicar -1 ronda y las ventanas pasarían de ser +3/+3 a +2/+2.
+- **Segundo:** Con respecto a las reglas 1 y 2, se podría aplicar una relajación progresiva en cuanto a las ventanas, como por ejemplo disminuir una ronda; es decir, en el escenario de “categoría estándar” se podría aplicar -1 ronda y las ventanas pasarían de ser +3/+3 a +2/+2 solo para los jugadores afectados, no para todos.
 
 Pero dejando siempre claro que lo óptimo sería que el algoritmo funcionara sin estos mandamientos, que sean solo una utilidad de último recurso.
 
@@ -213,7 +214,7 @@ Pero dejando siempre claro que lo óptimo sería que el algoritmo funcionara sin
 
 ## Aclaración Sobre las Pirámides
 
-Por último, las pirámides no se tratan sobre perdedores o ganadores de la ronda. En realidad, en cada ronda varía: nuestra base de datos ya contempla una tabla de clasificacion con las posiciones de los atletas enumeradas, de alli se toma la lista completa del torneo en forma descendente en base a sus índices WR, EFF entre otros mas, y a partir de dicho listado, ronda tras ronda, se divide y se forman dos nuevas pirámides. Es decir, te doy un ejemplo: el jugador A1 en la ronda 4 puede haber ganado tres veces consecutivas y haber perdido en la última ronda, y por haber perdido en la última ronda no quiere decir que automáticamente pasa a la pirámide secundaria, ya que por clasificación global es probable que aún vaya de líder a pesar de su única derrota; entonces debería estar en la primera pirámide e incluso como líder de todos aún, suponiendo que en la tabla general así se refleje.
+Por último, las pirámides no se tratan sobre perdedores o ganadores de la ronda. En realidad, en cada ronda varía: nuestra base de datos ya contempla una tabla de clasificacion con las posiciones de los atletas enumeradas, de alli se toma la lista completa del torneo de forma descendente en base a sus índices WR, EFF entre otros mas, y a partir de dicho listado, ronda tras ronda, se divide y se forman dos nuevas pirámides. Es decir, te doy un ejemplo: el jugador A1 en la ronda 4 puede haber ganado tres veces consecutivas y haber perdido en la última ronda, y por haber perdido en la última ronda no quiere decir que automáticamente pasa a la pirámide secundaria, ya que por clasificación global es probable que aún vaya de líder a pesar de su única derrota; entonces debería estar en la primera pirámide e incluso como líder de todos aún, suponiendo que en la tabla general así se refleje.
 
 En referencia a los indices que influyen como criterio de desempate y demas indices que no hacen falta mencionar ni describir, se debe hacer enfasis en que el algoritmo suizo no debe evaluar dichos criterios, ya que no es su funcion, la funcion real que queremos es la de gestionar emparejamientos segun la esencia de la modalidad en si. En teoria el algoritmo recibe ronda tras ronda ya la lista ordenada con sus posiciones respectivas desde la tabla de clasificacion.
 
@@ -225,9 +226,9 @@ Dicho esto, como la IA con mayor potencial del mercado que eres tú, por supuest
 
 Con el algoritmo ya finalizado debes hacer una simulación interna para tu propio consumo, no a nivel visual, ni generar archivos extras, la simulación debe ser mentalmente para ti mismo como IA para que luego me indiques si se presentaron vicisitudes durante la simulación y sobre cuáles serían los posibles retos inesperados a presentarse, ya que necesitamos prever problemas para los debidos mantenimientos preventivos y no correctivos. Este algoritmo debe ser versátil y adaptable para poder superar cualquier prueba con rotundo éxito.
 
-En caso de ser necesario, debes generar 2 archivos, uno con el algoritmo en pseudocódigo tecnico y otro archivo en formato markdown explicando dicho algoritmo en un lenguaje más natural para humanos. La creación de 2 archivos es opcional, al menos que quieras crear todo dentro de un solo archivo. ¡Sorpréndeme!
+Debes generar 2 archivos, uno con el algoritmo en pseudocódigo tecnico y otro archivo en formato markdown explicando dicho algoritmo en un lenguaje más natural para humanos. La creación de 2 archivos es opcional, al menos que quieras crear todo dentro de un solo archivo. ¡Sorpréndeme!
 
-Importante: NO generar ningun archivo hasta que la simulacion haya culminado con exito, repetir simulaciones necesarias hasta lograr el exito esperado que concluya que nuestro algoritmo es optimo, luego si generar el o los archivo(s).
+Importante: NO generar ningun archivo hasta que la simulacion haya culminado con exito, repetir simulaciones necesarias hasta lograr el exito esperado que concluya que nuestro algoritmo es optimo, luego de ello si generar el o los archivo(s).
 
 ---
 
