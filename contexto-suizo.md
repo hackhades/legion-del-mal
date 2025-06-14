@@ -141,6 +141,7 @@ Cerramos los lados de la pirámide y creamos las mesas con sus respectivos enfre
 - ¿E2 fue compañero de L1? = No (su compañero fue E1)  
 
 - ¿E2 fue rival de k2 o H2? = No (sus rivales fueron F1 y F2).
+
   `Ejemplo de Caso contrario: Indistintamente que F1 o F2 tuvieran nueva pareja cada uno (Ejemplo F1 - K2), si llegasen a confrontarse el valor de la condicional seria "si" ya que no necesariamente F1 y F2 deben estar juntos para activarse y por ende se tendria que saltar y buscar otra pareja adecuada como rivales para E2.` 
 
 → Entonces seguimos adelante, ejecutamos.
