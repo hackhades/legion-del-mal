@@ -127,7 +127,7 @@ Es importante destacar que:
 
 Antes de proceder con el bloque de atletas con más victorias (en este caso, 1 victoria), el algoritmo debe verificar si el bloque generará mesas incompletas. Por ejemplo:
 
-- Si dividimos el bloque en cuestion, en este caso 14 atletas entre 4 (para formar mesas de 4 jugadores), obtenemos 3.5 mesas, lo cual no es un número entero.
+- Si dividimos el bloque en cuestión, en este caso 14 atletas entre 4 (para formar mesas de 4 jugadores), obtenemos 3.5 mesas, lo cual no es un número entero.
 - Necesitamos un número par de atletas para cumplir con el requisito de 4 jugadores por mesa.
 
 ### **Ajuste de Bloques**
@@ -163,7 +163,7 @@ A1, A2, C1, C2, M1, M2, G1, G2, I1, I2, E1, E2, K1, K2, L1, L2
 En la ronda 2, el algoritmo comienza a emparejar compañeros siguiendo estos pasos:
 
 1. Si el contiguo inmediato infringe la **Regla 1**, se avanza al siguiente puesto hasta encontrar un candidato válido.
-2. Una vez formadas todas las parejas, haremos un **recorrido del bloque** para contabilizar la cantidad de parejas y asi cersiorarnos que esta vez el bloque si sea par, de este modo podremos dividir el bloque en partes iguales.
+2. Una vez formadas todas las parejas, haremos un **recorrido del bloque** para contabilizar la cantidad de parejas y así cerciorarnos de que esta vez el bloque sí sea par, de este modo podremos dividir el bloque en partes iguales.
 3. Cada bloque se **pliega** para crear los enfrentamientos:
    - La mitad superior del bloque se enfrenta ordenadamente contra la mitad inferior.
    - La pareja en primer lugar de la mitad superior enfrenta a la pareja en primer lugar de la mitad inferior.
@@ -377,7 +377,7 @@ El algoritmo recibe la siguiente lista completa ordenada según el rendimiento:
 ```
 A2, C2, A1, C1, M2, G2, G1, M1, F1, J1, F2, J2, K1, K2, H1, N1, E2, I2, E1, I1, L1, L2, D2, B2, D1, B1, H2, N2
 ```
-A pesar que no se refleja, cabe recordar que desde tabla de clasificacion el algoritmo trae tanto la posicion de los atletas junto con su numero de victorias.
+A pesar de que no se refleja, cabe recordar que desde la tabla de clasificación el algoritmo trae tanto la posición de los atletas como su número de victorias.
 
 ## **Consideraciones Generales**
 
@@ -436,7 +436,7 @@ El algoritmo busca formar parejas verificando que no hayan sido compañeros en l
    - **Pareja formada:** G2 - M1
 
 
-## Escenario Ficticio e Hipotetico 
+## Escenario Ficticio e Hipotético 
   Supongamos que en el punto 4 del proceso de emparejamiento
   **Emparejamiento de los atletas ultimos atletas faltantes G2 y M1**
    - Verificación: 
@@ -458,7 +458,7 @@ El algoritmo debe retroceder hasta la penultima pareja formada (M2 - G1) y proba
      - G1 con M1: ✓ No han sido compañeros
    - **Nueva pareja formada:** G1 - M1
 
-> **Importante** el algoritmo debe tener presente y diseñar esta contigencia para cuando se detecten ese tipo de problemas.
+> **Importante:** El algoritmo debe tener presente y diseñar esta contingencia para cuando se detecten ese tipo de problemas.
 
 ### **Parejas Finales del Bloque 2**
 
@@ -742,15 +742,15 @@ Pero dejando siempre claro que lo óptimo sería que el algoritmo funcionara sin
 
 ---
 
-## Conclusiones y peticion a la IA
+## Conclusiones y petición a la IA
 
-Dicho esto, como la IA con mayor potencial del mercado que eres tú, por supuesto debes profundizar con rigurosidad y desarrollar el algoritmo por mí, justo esa es la idea, por eso he tratado de darte el contexto necesario. El algoritmo que tú me generes debe tener la lógica y coherencia desde la ronda 1 hasta la ronda 9. No me decepciones ya que el algoritmo será auditado y no quiero hacer el ridículo por tu culpa.
+Dicho esto, como la IA con mayor potencial del mercado que eres tú, por supuesto debes profundizar con rigurosidad y desarrollar el algoritmo. El algoritmo que generes debe tener la lógica y coherencia desde la ronda 1 hasta la ronda 9. Es importante que el algoritmo esté bien fundamentado, ya que será auditado.
 
 Con el algoritmo ya finalizado debes hacer doble simulación interna para tu propio consumo, no a nivel visual, ni generar archivos extras, la simulación debe ser mentalmente para ti mismo como IA para que luego me indiques si se presentaron vicisitudes durante la simulación y sobre cuáles serían los posibles retos inesperados a presentarse, ya que necesitamos prever problemas para los debidos mantenimientos preventivos y no correctivos. Este algoritmo debe ser versátil y adaptable para poder superar cualquier prueba con rotundo éxito. Yo no necesito ver las simulaciones, la doble simulacion sera una sin jugadores "Bye" y otra simulacion si con 3 jugadores con estatus BYE y 1 abandono.
 
-Debes generar 2 archivos, uno con el algoritmo en pseudocódigo tecnico y otro archivo en formato markdown explicando dicho algoritmo en un lenguaje más natural para humanos. La creación de 2 archivos es opcional, al menos que quieras crear todo dentro de un solo archivo. ¡Sorpréndeme!
+Se generarán dos archivos: uno con el algoritmo en pseudocódigo técnico y otro en formato Markdown con una explicación en lenguaje natural. La estructura detallada se proporcionará una vez finalizada la revisión del algoritmo.
 
-Importante: NO generar ningun archivo hasta que la doble simulacion haya culminado con exito, repetir simulaciones necesarias hasta lograr el exito esperado y comprobar que nuestro algoritmo es optimo, luego de ello si generar el o los archivo(s).
+**Importante:** No se generarán archivos hasta que las simulaciones internas hayan culminado con éxito. Se repetirán las simulaciones según sea necesario para garantizar que el algoritmo sea óptimo antes de proceder con la generación de los archivos.
 
 ---
 
