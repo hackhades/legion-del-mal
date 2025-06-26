@@ -354,7 +354,6 @@ En un torneo de 9 rondas:
 3. **Relajacion progresiva**
    - Leer propuesta mas adelante y tambien leer mandamientos excepcionales.
 
----
 
 # **Análisis de Ronda 3**
 
@@ -561,6 +560,65 @@ Enfrentamientos (Sistema de plegado, Regla 2):
 | **5** | **K1 – H1** vs **I2 – E1** |
 | **6** | **L1 – D2** vs **D1 – H2** |
 | **7** | **L2 – B2** vs **B1 – N2** |
+
+---
+
+# Consideraciones sobre la Paridad de Bloques
+
+## Causas de Mesas Incompletas en Bloques
+
+Es fundamental comprender que **un torneo puede tener un número total de participantes válido para formar mesas completas**, pero durante el desarrollo del torneo, **la división natural en bloques por número de victorias puede generar cantidades impares** que requieren protocolos de ajuste.
+
+### Causas Principales
+
+1. **División Natural del Sistema Suizo (Situación Normal)**
+   - Los atletas se distribuyen en bloques según sus victorias
+   - Esta distribución orgánica frecuentemente genera números impares por bloque
+   - **Es completamente normal y esperado** en el funcionamiento del sistema
+
+   **Ejemplo Ilustrativo:**
+   - **36 atletas** = 7 mesas completas (28 ÷ 4 = 7)
+   - **44 atletas** = 11 mesas completas (44 ÷ 4 = 11)
+
+   **Sin embargo, durante las rondas intermedias:**
+   - Un bloque puede tener **14 atletas** (mesas incompletas) → Requiere ajuste para el plegado y así completar mesas reglamentarias de 4 atletas
+   - Un bloque puede tener **22 atletas** (mesas incompletas) → Necesita protocolo de redistribución para cumplir con la exigencia de mesas reglamentarias de 4 atletas
+
+2. **Abandonos**
+   - Atletas que deciden retirarse del torneo por diversas razones
+   - Impacto directo en la paridad de los bloques
+
+3. **Expulsiones por Violaciones Reglamentarias**
+   - Atletas sancionados por incumplimiento de las reglas
+   - Similar al abandono en términos de su efecto en la paridad
+
+4. **Inasistencias Imprevistas**
+   - Atletas que no se presentan a una ronda específica
+   - Afectan temporalmente la composición de los bloques
+
+5. **Reducción Progresiva en Rondas Avanzadas**
+   - En fases finales del torneo, la distribución de victorias puede resultar en un bloque superior con un solo atleta
+   - **Escenario crítico:** En rondas 5-6 o posteriores, el bloque de máxima puntuación puede quedar con un único competidor
+   - **Implicación técnica:** Requiere protocolo de promoción para integrar al atleta solitario en una mesa competitiva
+   - **Consideración estratégica:** Este fenómeno es intrínseco a la dinámica de clasificación de rezagados en torneos suizos
+
+   **Ejemplo de flujo:**
+   - Ronda 5: Bloque superior con 2 atletas → Se enfrentan en la ronda 6
+   - Ronda 6: El perdedor desciende, el ganador queda como único en el bloque superior
+   - Ronda 7: Protocolo especial para promover atletas e integrarlos con el atleta solitario
+
+## Impacto en el Algoritmo
+
+Cuando se detecta un número impar en cualquier bloque:
+- **El sistema de plegado no puede ejecutarse** correctamente (no se pueden formar mitades iguales)
+- **Se activa el protocolo de ajuste de bloques**
+- **Se implementa el sistema de BYE** cuando corresponde según el MOD 4
+
+## Manejo Automático
+
+El algoritmo debe incorporar una verificación sistemática antes de cada proceso de plegado para detectar estas situaciones y aplicar los protocolos correspondientes.
+
+> **Nota Importante:** Esta verificación es obligatoria en cada ronda. Incluso en torneos sin abandonos ni inasistencias, la distribución natural de atletas por bloques de victorias frecuentemente genera números impares que requieren ajustes para el correcto funcionamiento del algoritmo.
 
 ---
 
