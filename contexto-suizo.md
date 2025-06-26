@@ -2,8 +2,6 @@
 
 ---
 
----
-
 ## **Contexto**
 
 En el sistema de dominó profesional con **SvelteKit** y **Svelte 5** que estoy desarrollando sobre gestión de torneos y manejo de rankings, la modalidad más utilizada es el **sistema suizo**. Los torneos a nivel internacional con **ELO** se juegan siempre en **parejas rotativas**, es decir, la clasificación es individual pero en cada ronda se empareja con un compañero nuevo, lo mismo sucede con los rivales.
@@ -24,7 +22,7 @@ A lo largo de todo el torneo, el **número total de victorias** actúa como crit
 
 En referencia a los índices que influyen como criterio de desempate y demás índices, se debe hacer énfasis en que el **algoritmo suizo no debe evaluar dichos criterios**, ya que no es su función. La función real que queremos es la de gestionar emparejamientos y enfrentamientos según la esencia de la modalidad en sí.
 
-En teoría, el algoritmo recibe ronda tras ronda la lista ya ordenada con sus posiciones respectivas desde la tabla de clasificación.
+En teoría, desde la tabla de clasificación el algoritmo recibe ronda tras ronda la lista ya ordenada con sus posiciones respectivas.
 
 ### **Escalabilidad del Torneo**
 
@@ -90,7 +88,7 @@ Los ganadores de la primera ronda fueron:
 
 ### **Proceso de Ordenamiento Inicial**
 
-Después de que la tabla de clasificación aplica criterios de desempate con índices discriminatorios secundarios, el algoritmo recibe la lista completa ordenada en forma descendente con todos los atletas según su eficiencia y desempeño ronda tras ronda. Esto es necesario porque pueden existir atletas empatados en número de victorias, pero con diferentes posiciones debido a los puntajes obtenidos (puntos a favor y en contra por partida).
+Después de que la tabla de clasificación aplica criterios de desempate con índices discriminatorios secundarios, el algoritmo vuelve a recibir la lista completa ordenada en forma descendente con todos los atletas según su eficiencia y desempeño ronda tras ronda. Esto es necesario porque pueden existir atletas empatados en número de victorias, pero con diferentes posiciones debido a los puntajes obtenidos (puntos a favor y en contra por partida).
 
 ### **Lista Ordenada Recibida**
 
@@ -129,7 +127,7 @@ Es importante destacar que:
 
 Antes de proceder con el bloque de atletas con más victorias (en este caso, 1 victoria), el algoritmo debe verificar si el bloque generará mesas incompletas. Por ejemplo:
 
-- Si dividimos el bloque 14 atletas entre 4 (para formar mesas de 4 jugadores), obtenemos 3.5 mesas, lo cual no es un número entero.
+- Si dividimos el bloque en cuestion, en este caso 14 atletas entre 4 (para formar mesas de 4 jugadores), obtenemos 3.5 mesas, lo cual no es un número entero.
 - Necesitamos un número par de atletas para cumplir con el requisito de 4 jugadores por mesa.
 
 ### **Ajuste de Bloques**
@@ -165,7 +163,7 @@ A1, A2, C1, C2, M1, M2, G1, G2, I1, I2, E1, E2, K1, K2, L1, L2
 En la ronda 2, el algoritmo comienza a emparejar compañeros siguiendo estos pasos:
 
 1. Si el contiguo inmediato infringe la **Regla 1**, se avanza al siguiente puesto hasta encontrar un candidato válido.
-2. Una vez formadas todas las parejas, se crean los **bloques por puntos**.
+2. Una vez formadas todas las parejas, haremos un **recorrido del bloque** para contabilizar la cantidad de parejas y asi cersiorarnos que esta vez el bloque si sea par, de este modo podremos dividir el bloque en partes iguales.
 3. Cada bloque se **pliega** para crear los enfrentamientos:
    - La mitad superior del bloque se enfrenta ordenadamente contra la mitad inferior.
    - La pareja en primer lugar de la mitad superior enfrenta a la pareja en primer lugar de la mitad inferior.
@@ -201,12 +199,11 @@ I1 - E1, I2 - E2, K1 - L1, K2 - L2
 
 El algoritmo cierra los pliegues paralelamente, creando así las mesas con sus respectivos enfrentamientos:
 
-| Mesa | Partido |
-|------|---------|
-| 1    | **A1 – C1** vs **I1 – E1** |
-| 2    | **A2 – C2** vs **I2 – E2** |
-| 3    | **M1 – G1** vs **K1 – L1** |
-| 4    | **M2 – G2** vs **K2 – L2** |
+| Partido |
+| **A1 – C1** vs **I1 – E1** |
+| **A2 – C2** vs **I2 – E2** |
+| **M1 – G1** vs **K1 – L1** |
+| **M2 – G2** vs **K2 – L2** |
 
 ### **Explicación del Proceso**
 
@@ -250,17 +247,16 @@ F1 - J1, F2 - J2, H1 - N1, H2 - N2, D1 - B1, D2 - B2
 
 El algoritmo cierra los pliegues paralelamente, creando así las siguientes mesas con sus respectivos enfrentamientos:
 
-| Mesa | Partido |
-|------|---------|
-| 1    | **F1 – J1** vs **H2 – N2** |
-| 2    | **F2 – J2** vs **D1 – B1** |
-| 3    | **H1 – N1** vs **D2 – B2** |
+| Partido |
+| **F1 – J1** vs **H2 – N2** |
+| **F2 – J2** vs **D1 – B1** |
+| **H1 – N1** vs **D2 – B2** |
 
 ### **Consideraciones**
 
-- Se mantiene el orden jerárquico en la asignación de mesas.
+- Se mantiene el orden jerárquico para la futura asignación de mesas.
 - Se respeta la **Regla 1** para evitar emparejamientos recientes.
-- La numeración de mesas continúa desde la última asignada en el bloque anterior.
+- Se respeta la **Regla 2** para evitar rivales recientes.
 
 ---
 
@@ -308,7 +304,7 @@ Un atleta no puede volver a formar pareja con un excompañero hasta que hayan tr
 - **Flexibilidad:** En torneos pequeños, se puede ser flexible considerando el número limitado de participantes.
 - **Fórmula de Cálculo:**
   ```
-  Ronda de Nuevo Emparejamiento = Ronda de Último Emparejamiento + 2
+  Ronda de Nuevo Emparejamiento = Ronda de Último Emparejamiento + 3
   ```
 
 #### **Ejemplo**
@@ -327,13 +323,13 @@ Un atleta no puede enfrentarse nuevamente a los mismos rivales hasta que hayan t
 - **Recomendación:** Aunque técnicamente podrían volver a enfrentarse después de 2 rondas, lo ideal es evitarlo cuando sea posible.
 - **Fórmula de Cálculo:**
   ```
-  Ronda de Nuevo Enfrentamiento = Ronda del Último Enfrentamiento + 1
+  Ronda de Nuevo Enfrentamiento = Ronda del Último Enfrentamiento + 2
   ```
 
 #### **Ejemplo**
 En un torneo de 9 rondas:
 - Si **A1** se enfrentó a **B1** y **B2** en la **Ronda 1**
-- **No podrá** volver a enfrentarse a ellos en la **Ronda 2**
+- **No podrá** volver a enfrentarse a cualquiera de ellos en la **Ronda 2**
 - **Podría** volver a enfrentárseles a partir de la **Ronda 3** (aunque se recomienda evitarlo si es posible)
 
 ### **Consideraciones Generales**
@@ -353,8 +349,8 @@ En un torneo de 9 rondas:
 2. **Fases Finales:**
    - En rondas avanzadas, especialmente en la final, estas reglas pueden flexibilizarse para priorizar los enfrentamientos más justos y emocionantes.
 
-3. **Desempates:**
-   - En caso de empates técnicos, el comité organizador puede hacer excepciones justificadas, siempre informando a todos los participantes.
+3. **Relajacion progresiva**
+   - Leer propuesta mas adelante y tambien leer mandamientos excepcionales.
 
 ---
 
@@ -381,6 +377,7 @@ El algoritmo recibe la siguiente lista completa ordenada según el rendimiento:
 ```
 A2, C2, A1, C1, M2, G2, G1, M1, F1, J1, F2, J2, K1, K2, H1, N1, E2, I2, E1, I1, L1, L2, D2, B2, D1, B1, H2, N2
 ```
+A pesar que no se refleja, cabe recordar que desde tabla de clasificacion el algoritmo trae tanto la posicion de los atletas junto con su numero de victorias.
 
 ## **Consideraciones Generales**
 
@@ -421,42 +418,53 @@ El algoritmo busca formar parejas verificando que no hayan sido compañeros en l
    - **Pareja formada:** A2 - C1
 
 2. **Emparejamiento de C2**
-   - Posibles compañeros restantes: M2, G2, G1, M1
+   - Posibles compañeros restantes: A1, M2, G2, G1, M1
    - Verificación:
-     - C2 con M2: ✓ No han sido compañeros
-   - **Pareja formada:** C2 - M2
+     - C2 con A1: ✓ No han sido compañeros
+   - **Pareja formada:** C2 - A1
 
-3. **Emparejamiento de A1**
+3. **Emparejamiento de M2**
    - Posibles compañeros restantes: G2, G1, M1
    - Verificación:
-     - A1 con G2: ✓ No han sido compañeros
-   - **Pareja formada:** A1 - G2
+     - M2 con G2: ❌ Fueron compañeros en Ronda 2
+     - M2 con G1: ✓ No han sido compañeros
+   - **Pareja formada:** M2 - G1
 
-4. **Emparejamiento de G1 y M1**
-   - Verificación:
-     - G1 con M1: ❌ Fueron compañeros en Ronda 2
-   - **Problema detectado:** No se puede formar esta pareja
-
-### **Solución: Reajuste de Emparejamiento**
-
-El algoritmo debe retroceder y probar una combinación diferente.
-
-1. **Reemparejamiento de A1**
-   - Posibles compañeros: G1, M1
-   - Verificación:
-     - A1 con G1: ✓ No han sido compañeros
-   - **Nueva pareja formada:** A1 - G1
-
-2. **Emparejamiento de G2 y M1**
+4. **Emparejamiento de G2 y M1**
    - Verificación:
      - G2 con M1: ✓ No han sido compañeros
    - **Pareja formada:** G2 - M1
 
+
+## Escenario Ficticio e Hipotetico 
+  Supongamos que en el punto 4 del proceso de emparejamiento
+  **Emparejamiento de los atletas ultimos atletas faltantes G2 y M1**
+   - Verificación: 
+     - G2 con M1: ❌ Fueron compañeros en Ronda 2
+   - **Problema detectado:** No se puede formar esta pareja
+
+### **Solución al problema detectado: Reajuste de Emparejamiento**
+
+El algoritmo debe retroceder hasta la penultima pareja formada (M2 - G1) y probar un cruce de combinaciones diferentes hasta encontrar una combinación valida.
+
+1. **Reemparejamiento de M2**
+   - Posibles compañeros: G2, M1, G1 
+   - Verificación:
+     - M2 con G2: ✓ No han sido compañeros
+   - **Nueva pareja formada:** M2 - G2
+
+2. **Reemparejamiento de G1 y M1**
+   - Verificación:
+     - G1 con M1: ✓ No han sido compañeros
+   - **Nueva pareja formada:** G1 - M1
+
+> **Importante** el algoritmo debe tener presente y diseñar esta contigencia para cuando se detecten ese tipo de problemas.
+
 ### **Parejas Finales del Bloque 2**
 
 1. **A2 - C1**
-2. **C2 - M2**
-3. **A1 - G1**
+2. **C2 - A1**
+3. **M2 - G1**
 4. **G2 - M1**
 
 ## **3. Sistema de Plegado**
@@ -465,66 +473,50 @@ El algoritmo debe retroceder y probar una combinación diferente.
 
 | Mitad | Parejas |
 |-------|---------|
-| **Superior** | A2 - C1, C2 - M2 |
-| **Inferior** | A1 - G1, G2 - M1 |
+| **Superior** | A2 - C1, C2 - A1 |
+| **Inferior** | M2 - G1, G2 - M1 |
 
 ## **4. Validación de Enfrentamientos - Regla 2**
 
-Antes de confirmar los enfrentamientos, el algoritmo debe verificar que ningún atleta se enfrente a rivales que ya enfrentó en la ronda anterior.
+Antes de confirmar los enfrentamientos, el algoritmo debe verificar que ningún atleta se enfrente a rivales que ya enfrentó en la ronda anterior o segun la ventana que corresponda.
 
 ### **Enfrentamientos Propuestos**
 
-1. **A2 - C1** vs **A1 - G1**
-2. **C2 - M2** vs **G2 - M1**
+1. **A2 - C1** vs **M2 - G1**
+2. **C2 - A1** vs **G2 - M1**
 
 ### **Verificación de la Regla 2**
 
-- **A2 - C1 vs A1 - G1**
-  - A2 enfrentó a A1 en Ronda 1 ❌
-  - **Solución:** Se requiere ajuste
+- **A2 - C1 vs M2 - G1**
+  - A2 no se enfrentó a M2 en Ronda 2 ✓
+  - A2 no se enfrentó a G1 en Ronda 2 ✓
+  - C1 no se enfrentó a M2 en Ronda 2 ✓
+  - C1 no se enfrentó a G1 en Ronda 2 ✓
+  - **Solución:** No requiere ajuste
 
-- **C2 - M2 vs G2 - M1**
+- **C2 - A1 vs G2 - M1**
   - No hay enfrentamientos previos entre estos equipos ✓
 
-### **Ajuste Necesario**
+  ### **Enfrentamientos Finales del Bloque 2**
 
-El algoritmo debe intercambiar los enfrentamientos para evitar la violación de la Regla 2:
+| Partido |
+| **A2 - C1** vs **M2 - G1** |
+| **C2 - A1** vs **G2 - M1** |
 
-1. **A2 - C1** vs **G2 - M1**
-2. **C2 - M2** vs **A1 - G1**
+## **Ajuste Necesario solo en caso que se requieran correciones por enfrentamientos repetidos**
 
-### **Enfrentamientos Finales del Bloque 2**
+El algoritmo debe intercambiar los enfrentamientos con la pareja contigua del pliegue opuesto para evitar la violación de la Regla 2:
 
-| Mesa | Partido |
-|------|---------|
-| 1 | **A2 - C1** vs **G2 - M1** |
-| 2 | **C2 - M2** vs **A1 - G1** |
+  ### **Ejemplo:** 
+  - **A2 - C1 vs M2 - G1**
+  - A2 si se enfrentó a M2 en Ronda 2 ❌ (simulación hipotetica)
+  - **Problema Detectado:** Se requiere ajuste
 
-### Validación Sistemática:
+   Verificar entonces → **A2 - C1** vs **G2 - M1**
 
-#### Enfrentamiento 1: **A2 - C1 vs A1 - G1**
+  Si enfrentamiento sigue siendo repetitivo y se acaban las parejas del pliegue opuesto entonces confrontar de manera ascendente con la ultima pareja de su propio pliegue, hasta encontrar rivales validos. Ejemplo: **¿ A2 - C1 vs C2 - A1 ?**
 
-**Verificaciones:**
-- ¿A2 enfrentó a A1 en ronda 2? → No (A2 enfrentó a I2-E2) ✓
-- ¿A2 enfrentó a G1 en ronda 2? → No ✓
-- ¿C1 enfrentó a A1 en ronda 2? → No (si fueron compañeros pero no rivales) ✓
-- ¿C1 enfrentó a G1 en ronda 2? → No (C1 enfrentó a I1-E1) ✓
-
-**NO HAY CONFLICTO** El enfrentamiento A2-C1 vs A1-G2 es válido según la Regla 2.
-
-#### Enfrentamiento 2: **C2 - M2 vs G2 - M1**
-
-**Verificaciones:**
-- ¿C2 enfrentó a G2 en ronda 2? → No (C2 enfrentó a I2-E2) ✓
-- ¿C2 enfrentó a M1 en ronda 2? → No ✓
-- ¿M2 enfrentó a G2 en ronda 2? → No (M2 enfrentó a K2-L2) ✓
-- ¿M2 enfrentó a M1 en ronda 2? → No ✓
-
-**NO HAY CONFLICTO** El enfrentamiento C2-M2 vs G2-M1 es válido según la Regla 2.
-
-### Enfrentamientos Finales del Bloque 2
-- **A2 - C1 vs G1 - M1**
-- **C2 - M2 vs A1 - G2**
+Cuando no existan conflictos, se procesan los enfrentamientos finales del bloque 2.
 
 ---
 
@@ -651,50 +643,6 @@ Si válidos → A2-E1 vs C1-I2 (Mesa 1)
 Si inválidos → continuar con D1, D2, etc.
 
 Resultado: El Duelo de Líderes garantiza que los mejores atletas se enfrenten directamente, manteniendo la competitividad y el espíritu del sistema suizo profesional.
-
----
-
-## Escenario Especial: Bloque Inferior con 2 Atletas
-
-### REGLA DEL FLOAT-UP DE COLISTAS
-
-Este protocolo se activa cuando el **último bloque** contiene exactamente **dos atletas**.
-
-1. **Identificación del escenario**  
-   • Bloque inferior con 2 atletas.  
-   • Verificar si ya se enfrentaron durante la ventana establecida.
-
-2. **Opción rápida – Duelo directo**  
-   Se usa solo si (a) los colistas **aún no se han enfrentado** y (b) ascenderlos rompería la paridad del bloque superior (|B<sub>sup</sub>| + 2 ≡ 2 mod 4).  
-   • Los dos colistas permanecen juntos y juegan como rivales.  
-   • Se seleccionan los dos atletas inmediatamente superiores (puestos *n-1* y *n*) como compañeros, siempre que respeten Regla 1 y Regla 2.  
-   • Se forma una **única mesa de 4**; el resto del bloque superior se empareja con normalidad.
-
-3. **Float-up estándar**  
-   En cualquier otro caso, ambos colistas **ascienden (up-float)** al bloque superior y se insertan en las **dos últimas posiciones** para no alterar la jerarquía.  
-   • El bloque resultante se empareja según el procedimiento habitual.  
-   • Marcar a ambos como *float-up* para evitar ascensos consecutivos.
-
-4. **Contingencia de mesas impares tras el ascenso**  
-   Después del ascenso, si el tamaño del nuevo bloque queda |B| ≡ 2 mod 4, se aplica una **transferencia compensatoria**:  
-   • Los **dos últimos** del bloque ahora excedente descienden (down-float) al siguiente bloque; si no existe, reciben **BYE** conforme a la sección de inasistencias.  
-   • Así se restablece la divisibilidad por 4 sin romper la lógica suiza.
-
-5. **Impacto en la clasificación**  
-   • Los colistas siguen ocupando las posiciones más bajas y no adelantan a jugadores con mejor puntuación.  
-   • El sistema evita byes prematuros y repeticiones innecesarias.
-
-**Ejemplo 1 (ascenso directo):**  
-Bloque X-1: 10 jug. (2-2)  
-Bloque X :   2 jug. (1-3)  
-⇒ 10 + 2 = 12 (divisible por 4) → float-up estándar.
-
-**Ejemplo 2 (contingencia por imparidad):**  
-Bloque X-1: 11 jug. (2-2)  
-Bloque X :   2 jug. (1-3)  
-⇒ 11 + 2 = 13 (≡ 1 mod 4).  
-  a) Si colistas no se han enfrentado → Duelo directo + 2 compañeros del propio bloque superior.  
-  b) Si ya se enfrentaron → Float-up y luego down-float de compensación.
 
 ---
 
