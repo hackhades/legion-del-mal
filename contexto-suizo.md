@@ -199,8 +199,8 @@ I1 - E1, I2 - E2, K1 - L1, K2 - L2
 
 El algoritmo cierra los pliegues paralelamente, creando así las mesas con sus respectivos enfrentamientos:
 
-| Partido |
-|---------|
+| Partidas |
+|----------|
 | **A1 – C1** vs **I1 – E1** |
 | **A2 – C2** vs **I2 – E2** |
 | **M1 – G1** vs **K1 – L1** |
@@ -248,7 +248,8 @@ F1 - J1, F2 - J2, H1 - N1, H2 - N2, D1 - B1, D2 - B2
 
 El algoritmo cierra los pliegues paralelamente, creando así las siguientes mesas con sus respectivos enfrentamientos:
 
-| Partido |
+| Partidas |
+|----------|
 | **F1 – J1** vs **H2 – N2** |
 | **F2 – J2** vs **D1 – B1** |
 | **H1 – N1** vs **D2 – B2** |
@@ -275,7 +276,7 @@ Una vez conformados todos los enfrentamientos, procedemos a enumerar las mesas p
 
 ### **Mesas de la Ronda 2**
 
-| Mesa | Partido |
+| Mesa | Partida |
 |------|---------|
 | **1** | **A1 – C1** vs **I1 – E1** |
 | **2** | **A2 – C2** vs **I2 – E2** |
@@ -500,7 +501,8 @@ Antes de confirmar los enfrentamientos, el algoritmo debe verificar que ningún 
 
   ### **Enfrentamientos Finales del Bloque 2**
 
-| Partido |
+| Partidas |
+|----------|
 | **A2 - C1** vs **M2 - G1** |
 | **C2 - A1** vs **G2 - M1** |
 
@@ -550,7 +552,7 @@ Enfrentamientos (Sistema de plegado, Regla 2):
 
 ### Mesas Definitivas – Ronda 3
 
-| Mesa | Partido |
+| Mesa | Partida |
 |------|---------|
 | **1** | **A2 – C1** vs **G1 – M1** |
 | **2** | **C2 – M2** vs **A1 – G2** |
