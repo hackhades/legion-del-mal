@@ -200,6 +200,7 @@ I1 - E1, I2 - E2, K1 - L1, K2 - L2
 El algoritmo cierra los pliegues paralelamente, creando así las mesas con sus respectivos enfrentamientos:
 
 | Partido |
+|---------|
 | **A1 – C1** vs **I1 – E1** |
 | **A2 – C2** vs **I2 – E2** |
 | **M1 – G1** vs **K1 – L1** |
