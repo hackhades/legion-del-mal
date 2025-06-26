@@ -548,13 +548,16 @@ Enfrentamientos (Sistema de plegado, Regla 2):
 - **L2 – B2 vs B1 – N2**
 
 ### Mesas Definitivas – Ronda 3
-1. **A2 – C1 vs G1 – M1**  
-2. **C2 – M2 vs A1 – G2**  
-3. **F1 – J2 vs K2 – N1**  
-4. **J1 – F2 vs E2 – I1**  
-5. **K1 – H1 vs I2 – E1**  
-6. **L1 – D2 vs D1 – H2**  
-7. **L2 – B2 vs B1 – N2**
+
+| Mesa | Partido |
+|------|---------|
+| **1** | **A2 – C1** vs **G1 – M1** |
+| **2** | **C2 – M2** vs **A1 – G2** |
+| **3** | **F1 – J2** vs **K2 – N1** |
+| **4** | **J1 – F2** vs **E2 – I1** |
+| **5** | **K1 – H1** vs **I2 – E1** |
+| **6** | **L1 – D2** vs **D1 – H2** |
+| **7** | **L2 – B2** vs **B1 – N2** |
 
 ---
 
@@ -606,7 +609,6 @@ Protocolo de Ejecución:
   - Deben enfrentarse obligatoriamente como rivales en bandos opuestos
   - Esta regla prevalece sobre cualquier otra consideración del algoritmo
 
-
 3. Búsqueda de Compañeros Válidos:
 
   - El algoritmo debe traer exactamente 2 atletas del bloque inmediato inferior
@@ -615,7 +617,6 @@ Protocolo de Ejecución:
   - Compañero A y Compañero B NO deben haberse enfrentado en ronda anterior.
   - Si los primeros 2 candidatos violan la Regla 1, el algoritmo debe continuar buscando secuencialmente hasta encontrar 2 candidatos válidos, en caso de ser válidos verificar que no violen la Regla 2.
   
-
 4. Configuración de Mesa:
 
   - Líder 1 + Compañero A vs Líder 2 + Compañero B
@@ -627,7 +628,6 @@ Protocolo de Ejecución:
 
   - El resultado de esta mesa define quién mantiene o toma el liderazgo absoluto
   - Es un momento decisivo en la evolución del torneo
-
 
 Ejemplo Práctico:
 Situación: Ronda 6, Bloque Superior con 2 atletas (5 victorias c/u)
@@ -650,9 +650,10 @@ Resultado: El Duelo de Líderes garantiza que los mejores atletas se enfrenten d
 
 **Caso Excepcional:** Cuando en primera ronda el administrador del torneo no decide comenzar la ronda en modo aleatorio sino que decide que los jugadores se ordenen por ELO, entonces el algoritmo recibe la lista completa de jugadores ordenada de manera descendente segun su ELO, posicionados desde el ELO mas alto hasta el ELO mas bajo. 
 
-En una situacion asi el algoritmo debe ser capaz de identificar la modalidad en cuestion y buscar a la pareja mas contigua (de nivel similar) y realizar el pareo antes de iniciar ronda 1.
+En una situacion asi el algoritmo debe ser capaz de identificar la modalidad en cuestion y buscar como compañero al atleta mas contiguo (de nivel similar) para conformar pareja antes de iniciar ronda 1.
 
 Supongamos recibimos el siguiente listado:
+
 **A1, A2, B1, B2, C1, C2, D1, D2, E1, E2, F1, F2, G1, G2, H1, H2, I1, I2, J1, J2, K1, K2, L1, L2, M1, M2, N1, N2**
 
 Realizamos el pareo:
@@ -663,9 +664,12 @@ Dividimos la lista completa de jugadores en una primera mitad (las mejores parej
 
 Del mismo modo haremos con la ultima mitad del listado total de parejas, los enviamos para conformar la Piramide Secundaria (PS), el algoritmo tambien va a subdividir entre lados A y B con la mitad superior y mitad inferior respectivamente.  
 
-Conformamos las piramides:
+PP: **A1 - A2, B1 - B2, C1 - C2, D1 - D2, E1 - E2, F1 - F2, G1 - G2**
+PS: **H1 - H2, I1 - I2, J1 - J2, K1 - K2, L1 - L2, M1 - M2, N1 - N2**
 
-Lado A PP: A1, A2, B1, B2, C1, C2, D1 (incongruencia detectada) 
+Conformamos las piramides y dividimos en partes iguales:
+
+Lado A PP: A1 - A2, B1 - B2, C1 - C2, **D1 - ¿?** (incongruencia detectada) 
 
 El algoritmo debe tener la capacidad de detectar si un lado es impar, si o si siempre cada lado debe tener un numero de atletas par. En el lado A comprobamos que no es par ya que 7 atletas es una cantidad impar, entonces el algoritmo debe subir desde PS a los 2 atletas lideres o mejor posicionados quienes serian H1 y H2, los ascendemos hasta PP y de este modo ya tendriamos un lado A de PP con parejas par. La siguiente estructura es la que debe generar el algoritmo, tal cual sin alucinaciones:
 
