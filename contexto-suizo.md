@@ -69,6 +69,8 @@ Aplicamos un algoritmo que posicione a los atletas al azar sin ningún criterio 
 A1, A2, C1, C2, E1, E2, G1, G2, I1, I2, K1, K2, M1, M2, B1, B2, D1, D2, F1, F2, H1, H2, J1, J2, L1, L2, N1, N2
 ```
 
+Al cual denominaremos bloque inicial, el cual seria el equivalente a "bloque 0".
+
 > **Nota:** Este orden aleatorio solo ocurre en la primera ronda.
 
 ### **Aplicación de las Reglas de Emparejamiento**
@@ -87,17 +89,19 @@ Aplicamos la **Regla 1*** (descrita más adelante) para emparejar compañeros y 
 | 6    | K1 - K2  | vs | L1 - L2  |
 | 7    | M1 - M2  | vs | N1 - N2  |
 
-### **Resultados de la Primera Ronda**
+### **Resultados de la Ronda 1**
 
 Los ganadores de la primera ronda fueron:
 
-- **Mesa 1:** A1 - A2
-- **Mesa 2:** C1 - C2
-- **Mesa 3:** E1 - E2
-- **Mesa 4:** G1 - G2
-- **Mesa 5:** I1 - I2
-- **Mesa 6:** K1 - K2
-- **Mesa 7:** M1 - M2
+| Parejas | 
+|--------|
+| A1 - A2 |
+| C1 - C2 |
+| E1 - E2 |
+| G1 - G2 |
+| I1 - I2 |
+| K1 - K2 |
+| M1 - M2 |
 
 ---
 
@@ -378,7 +382,7 @@ En un torneo de 9 rondas:
 
 Los ganadores de la segunda ronda fueron los siguientes equipos:
 
-| Equipo | 
+| Parejas | 
 |--------|
 | A1 – C1 |
 | A2 – C2 |
