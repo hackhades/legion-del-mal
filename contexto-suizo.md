@@ -81,13 +81,13 @@ Aplicamos la **Regla 1*** (descrita más adelante) para emparejar compañeros y 
 
 | Mesa | Partida |
 |------|------------|
-| 1    | **A1 - A2** vs **B1 - B2** |
-| 2    | **C1 - C2** vs **D1 - D2** |
-| 3    | **E1 - E2** vs **F1 - F2** |
-| 4    | **G1 - G2** vs **H1 - H2** |
-| 5    | **I1 - I2** vs **J1 - J2** |
-| 6    | **K1 - K2** vs **L1 - L2** |
-| 7    | **M1 - M2** vs **N1 - N2** |
+|  1   | **A1 - A2** vs **B1 - B2** |
+|  2   | **C1 - C2** vs **D1 - D2** |
+|  3   | **E1 - E2** vs **F1 - F2** |
+|  4   | **G1 - G2** vs **H1 - H2** |
+|  5   | **I1 - I2** vs **J1 - J2** |
+|  6   | **K1 - K2** vs **L1 - L2** |
+|  7   | **M1 - M2** vs **N1 - N2** |
 
 ### **Resultados de la Ronda 1**
 
