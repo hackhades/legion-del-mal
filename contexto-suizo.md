@@ -39,7 +39,7 @@ Para evitar la necesidad de reconstruir constantemente secuencias completas de e
 ### Glosario de Términos Clave
 
 - **Atleta**: Jugador individual (ej. A1, B2)
-- **Pareja (o Equipo Temporal)**: Dos atletas unidos por un guion "-" que compiten juntos en una ronda específica (ej. A1-C1). Este emparejamiento es temporal y puede cambiar en rondas posteriores.
+- **Pareja**: Equipo Temporal compuesto por dos atletas unidos por un guion "-" que compiten juntos en una ronda específica (ej. A1-C1). Este emparejamiento es temporal y puede cambiar en rondas posteriores.
 - **Mesa**: Conjunto de cuatro atletas (dos parejas) que compiten entre sí, representado con el término "vs" como conductor (ej. A1-C1 vs M2-G1)
 - **Ronda**: Serie de partidas que se juegan simultáneamente en un momento dado del torneo
 - **Bloque**: Grupo de atletas con el mismo número de victorias en un momento dado del torneo
@@ -665,6 +665,13 @@ El algoritmo debe incorporar una verificación sistemática antes de cada proces
 4. **Verificación de Regla 2:** Antes de confirmar enfrentamientos, verificar que ninguna pareja haya enfrentado rivales de la ronda anterior o numero de rondas segun corresponda ventana por categoria.
 
 5. **Enumeración de Mesas:** Numera ascendentemente comenzando por el atleta líder del torneo.
+
+6. **Gestión de Enfrentamientos:**
+   - **Almacenamiento Temporal:** Todos los enfrentamientos generados se guardan en una lista temporal
+   - **Recolección:** Se recopilan los enfrentamientos de todos los bloques
+   - **Asignación Final:** Se asignan números de mesa siguiendo el orden jerárquico de los líderes, ejemplo:
+     - **Mesa 1:** Líder actual del torneo
+     - **Mesas siguientes:** Siguen el orden de clasificación de los atletas disponibles de tal modo que si el #2, #3 y #5 ya están en mesas superiores, la siguiente mesa la lidera el #4
 
 ---
 
