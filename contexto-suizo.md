@@ -30,6 +30,23 @@ En todo torneo élite de esta categoría, la cantidad ideal de participantes sue
 
 ---
 
+## **Notas Importantes**
+
+### Sobre el Análisis de Emparejamientos
+
+Para evitar la necesidad de reconstruir constantemente secuencias completas de emparejamientos y enfrentamientos, es fundamental llevar un registro progresivo de los mismos. Este enfoque previene conclusiones precipitadas que podrían llevar a interpretaciones incorrectas o "alucinaciones" en el análisis de los emparejamientos.
+
+### Glosario de Términos Clave
+
+- **Atleta**: Jugador individual (ej. A1, B2)
+- **Pareja (o Equipo Temporal)**: Dos atletas unidos por un guion "-" que compiten juntos en una ronda específica (ej. A1-C1). Este emparejamiento es temporal y puede cambiar en rondas posteriores.
+- **Mesa**: Conjunto de cuatro atletas (dos parejas) que compiten entre sí, representado con el término "vs" como conductor (ej. A1-C1 vs M2-G1)
+- **Ronda**: Serie de partidas que se juegan simultáneamente en un momento dado del torneo
+- **Bloque**: Grupo de atletas con el mismo número de victorias en un momento dado del torneo
+- **Plegado**: Acción de dividir un bloque de atletas en dos mitades iguales después del emparejamiento, donde la mitad superior se enfrenta a la mitad inferior de manera paralela. Este proceso garantiza que los atletas con mejor rendimiento se enfrenten entre sí.
+
+---
+
 ## **Primera Ronda**
 
 ### **Configuración Inicial**
@@ -408,7 +425,7 @@ El algoritmo analiza y divide a los atletas en bloques según su número de vict
 ### **Aplicación de la Regla 1**
 El algoritmo busca formar parejas verificando que no hayan sido compañeros en las 2 rondas anteriores.
 
-#### **Primer Intento**
+#### **Intentos Recursivos**
 
 1. **Emparejamiento de A2**
    - Posibles compañeros: C2, A1, C1, M2, G2, G1, M1
@@ -553,8 +570,8 @@ Enfrentamientos (Sistema de plegado, Regla 2):
 
 | Mesa | Partida |
 |------|---------|
-| **1** | **A2 – C1** vs **G1 – M1** |
-| **2** | **C2 – M2** vs **A1 – G2** |
+| **1** | **A2 – C1** vs **M2 – G1** |
+| **2** | **C2 – A1** vs **G2 – M1** |
 | **3** | **F1 – J2** vs **K2 – N1** |
 | **4** | **J1 – F2** vs **E2 – I1** |
 | **5** | **K1 – H1** vs **I2 – E1** |
@@ -577,8 +594,8 @@ Es fundamental comprender que **un torneo puede tener un número total de partic
    - **Es completamente normal y esperado** en el funcionamiento del sistema
 
    **Ejemplo Ilustrativo:**
-   - **36 atletas** = 7 mesas completas (28 ÷ 4 = 7)
-   - **44 atletas** = 11 mesas completas (44 ÷ 4 = 11)
+   - **28 atletas** = 7 mesas completas (28 ÷ 4 = 7)
+   - Otro ejemplo pero con **44 atletas** = 11 mesas completas (44 ÷ 4 = 11)
 
    **Sin embargo, durante las rondas intermedias:**
    - Un bloque puede tener **14 atletas** (mesas incompletas) → Requiere ajuste para el plegado y así completar mesas reglamentarias de 4 atletas
