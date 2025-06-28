@@ -846,7 +846,7 @@ Dicho esto, como la IA con mayor potencial del mercado que eres tú, con mentali
 
 Con el algoritmo ya finalizado debes hacer doble simulación interna para tu propio consumo, no a nivel visual, ni generar archivos extras, la simulación debe ser mentalmente para ti mismo como IA para que luego me indiques si se presentaron vicisitudes durante la simulación y sobre cuáles serían los posibles retos inesperados a presentarse, ya que necesitamos prever problemas para los debidos mantenimientos preventivos y no correctivos. Este algoritmo debe ser versátil y adaptable para poder superar cualquier prueba con rotundo éxito. Yo no necesito ver las simulaciones, la doble simulacion sera una sin jugadores "Bye" y otra simulacion si con 3 jugadores con estatus BYE y 1 abandono.
 
-Se generarán dos archivos: uno con el algoritmo en pseudocódigo técnico y otro en formato Markdown con una explicación en lenguaje natural. La estructura detallada se proporcionará una vez finalizada la revisión del algoritmo.
+Se generarán dos archivos: uno con el algoritmo en pseudocódigo técnico y otro en formato Markdown con una explicación en lenguaje natural para la comprensión de los auditores. La explicación detallada se proporcionará una vez finalizada la revisión y generación del algoritmo.
 
 **Importante:** No se generarán archivos hasta que las simulaciones internas hayan culminado con éxito. Se repetirán las simulaciones según sea necesario para garantizar que el algoritmo sea óptimo antes de proceder con la generación de los archivos.
 
