@@ -267,7 +267,7 @@ F1 - J1, F2 - J2, H1 - N1, H2 - N2, D1 - B1, D2 - B2
 
 ### **Creación de Mesas**
 
-El algoritmo cierra los pliegues paralelamente, creando así las siguientes mesas con sus respectivos enfrentamientos:
+Respetando la Regla 2 El algoritmo cierra los pliegues paralelamente, creando así las siguientes mesas con sus respectivos enfrentamientos:
 
 | Partidas |
 |----------|
@@ -372,8 +372,8 @@ En un torneo de 9 rondas:
 2. **Fases Finales:**
    - En rondas avanzadas, especialmente en la final, estas reglas pueden flexibilizarse para priorizar los enfrentamientos más justos y emocionantes.
 
-3. **Relajacion progresiva**
-   - Leer propuesta mas adelante y tambien leer mandamientos excepcionales.
+3. **Relajación progresiva**
+   - Leer propuesta más adelante y también leer mandamientos excepcionales.
 
 
 # **Análisis de Ronda 3**
@@ -399,7 +399,7 @@ El algoritmo recibe la siguiente lista completa ordenada según el rendimiento:
 ```
 A2, C2, A1, C1, M2, G2, G1, M1, F1, J1, F2, J2, K1, K2, H1, N1, E2, I2, E1, I1, L1, L2, D2, B2, D1, B1, H2, N2
 ```
-A pesar de que no se refleja, cabe recordar que desde la tabla de clasificación el algoritmo trae tanto la posición de los atletas como su número de victorias.
+A pesar de que no se refleja, cabe recordar que desde la tabla de clasificación el algoritmo  o recibe tanto la posición de los atletas como su número de victorias.
 
 ## **Consideraciones Generales**
 
@@ -526,18 +526,18 @@ Antes de confirmar los enfrentamientos, el algoritmo debe verificar que ningún 
 | **A2 - C1** vs **M2 - G1** |
 | **C2 - A1** vs **G2 - M1** |
 
-## **Ajuste Necesario solo en caso que se requieran correciones por enfrentamientos repetidos**
+## **Ajuste Necesario solo en casos que se requieran correcciones por enfrentamientos repetidos**
 
-El algoritmo debe intercambiar los enfrentamientos con la pareja contigua del pliegue opuesto para evitar la violación de la Regla 2:
+El algoritmo debe intercambiar los enfrentamientos con la pareja contigua del pliegue opuesto para evitar la violación de la **Regla 2**:
 
   ### **Ejemplo:** 
   - **A2 - C1 vs M2 - G1**
-  - A2 si se enfrentó a M2 en Ronda 2 ❌ (simulación hipotetica)
-  - **Problema Detectado:** Se requiere ajuste
+   - A2 si se enfrentó a M2 en Ronda 2 ❌ (simulación hipotética)
+  - **Problema detectado:** Se requiere ajuste
 
    Verificar entonces → **A2 - C1** vs **G2 - M1**
 
-  Si enfrentamiento sigue siendo repetitivo y se acaban las parejas del pliegue opuesto entonces confrontar de manera ascendente con la ultima pareja de su propio pliegue, hasta encontrar rivales validos. Ejemplo: **¿ A2 - C1 vs C2 - A1 ?**
+  Si el enfrentamiento sigue siendo repetitivo y se acaban las parejas del pliegue opuesto entonces confrontar de manera ascendente con la última pareja de su propio pliegue, hasta encontrar rivales válidos. Ejemplo: **¿ A2 - C1 vs C2 - A1 ?**
 
 Cuando no existan conflictos, se procesan los enfrentamientos finales del bloque 2.
 
@@ -626,7 +626,7 @@ Es fundamental comprender que **un torneo puede tener un número total de partic
    **Ejemplo de flujo:**
    - Ronda 5: Bloque superior con 2 atletas → Se enfrentan en la ronda 6
    - Ronda 6: El perdedor desciende, el ganador queda como único en el bloque superior
-   - Ronda 7: Protocolo especial para promover atletas e integrarlos con el atleta solitario
+   - Ronda 7: Protocolo especial para promover atletas e integrarlos en el bloque con el competidor solitario
 
 ## Impacto en el Algoritmo
 
@@ -654,7 +654,7 @@ El algoritmo debe incorporar una verificación sistemática antes de cada proces
 3. **Procesamiento por Bloque (de mayor a menor victorias):**
 
    a) **Verificación de División:** Si el número de atletas en el bloque dividido entre 4 no da un número par:
-   - Trae los 2 mejores atletas del bloque inmediato inferior
+   - Trae la mínima cantidad necesaria de atletas del bloque inmediato inferior (por lo general suelen ser 2 atletas)
    - Verifica que no violen la Regla 1 con los 2 últimos del bloque superior
    - Si hay violación, busca los siguientes candidatos válidos en bloque inferior contiguo
 
@@ -728,8 +728,14 @@ Proceso:
 
 A2 y C1 NO pueden ser compañeros
 Buscar compañeros: ¿A2 fue compañero de E1 en ventana? ¿C1 fue compañero de I2 en ventana? ¿E1 fue rival de I2 en ventana?
-Si válidos → A2-E1 vs C1-I2 (Mesa 1)
-Si inválidos → continuar con D1, D2, etc.
+Si válidos → A2-E1 vs C1-I2 (Mesa 1) 
+Si inválidos → continuar con las combinaciones:
+  - E1, D1
+  - E1, D2
+  - I2, D1
+  - I2, D2
+  - D1, D2 
+  - D1, E2 y así sucesivamente...
 
 Resultado: El Duelo de Líderes garantiza que los mejores atletas se enfrenten directamente, manteniendo la competitividad y el espíritu del sistema suizo profesional.
 
@@ -739,7 +745,7 @@ Resultado: El Duelo de Líderes garantiza que los mejores atletas se enfrenten d
 
 **Caso Excepcional:** Cuando en primera ronda el administrador del torneo no decide comenzar la ronda en modo aleatorio sino que decide que los jugadores se ordenen por ELO, entonces el algoritmo recibe la lista completa de jugadores ordenada de manera descendente segun su ELO, posicionados desde el ELO mas alto hasta el ELO mas bajo. 
 
-En una situacion asi el algoritmo debe ser capaz de identificar la modalidad en cuestion y buscar como compañero al atleta mas contiguo (de nivel similar) para conformar pareja antes de iniciar ronda 1.
+En una situación así el algoritmo debe ser capaz de identificar la modalidad en cuestión y buscar como compañero al atleta más contiguo (de nivel similar) para conformar parejas antes de iniciar ronda 1.
 
 Supongamos recibimos el siguiente listado:
 
@@ -751,9 +757,10 @@ Realizamos el pareo:
 
 Dividimos la lista completa de jugadores en una primera mitad (las mejores parejas) y enviamos esa primera mitad para conformar la Piramide Principal (PP) y estos mismos a su vez se subdividen entre lados, es decir, en 2 grupos , la mitad superior sera el lado A de la piramide y la mitad inferior sera el lado B. 
 
-Del mismo modo haremos con la ultima mitad del listado total de parejas, los enviamos para conformar la Piramide Secundaria (PS), el algoritmo tambien va a subdividir entre lados A y B con la mitad superior y mitad inferior respectivamente.  
+Del mismo modo haremos con la última mitad del listado total de parejas, los enviamos para conformar la Pirámide Secundaria (PS), el algoritmo también va a subdividir entre lados A y B con la mitad superior y mitad inferior respectivamente.  
 
 PP: **A1 - A2, B1 - B2, C1 - C2, D1 - D2, E1 - E2, F1 - F2, G1 - G2**
+
 PS: **H1 - H2, I1 - I2, J1 - J2, K1 - K2, L1 - L2, M1 - M2, N1 - N2**
 
 Conformamos las piramides y dividimos en partes iguales:
@@ -763,9 +770,11 @@ Lado A PP: A1 - A2, B1 - B2, C1 - C2, **D1 - ¿?** (incongruencia detectada)
 El algoritmo debe tener la capacidad de detectar si un lado es impar, si o si siempre cada lado debe tener un numero de atletas par. En el lado A comprobamos que no es par ya que 7 atletas es una cantidad impar, entonces el algoritmo debe subir desde PS a los 2 atletas lideres o mejor posicionados quienes serian H1 y H2, los ascendemos hasta PP y de este modo ya tendriamos un lado A de PP con parejas par. La siguiente estructura es la que debe generar el algoritmo, tal cual sin alucinaciones:
 
 Lado A PP: A1 - A2, B1 - B2, C1 - C2, D1 - D2 
+
 Lado B PP: E1 - E2, F1 - F2, G1 - G2, H1 - H2
 
 Lado A PS: I1 - I2, J1 - J2, K1 - K2 
+
 Lado B PS: L1 - L2, M1 - M2, N1 - N2
 
 Cerramos los lados de cada pirámide y creamos las mesas con sus respectivos enfrentamientos:
@@ -778,14 +787,14 @@ Cerramos los lados de cada pirámide y creamos las mesas con sus respectivos enf
 - Mesa 6: **J1 – J2 vs M1 – M2**
 - Mesa 7: **K1 – K2 vs N1 – N2**
 
-y asi bajo este esquema ya tenemos las mesas ordenadas para dar inicio al torneo, despues para las rondas posteriores se aplica la misma dinamica por bloques.
+y así bajo este esquema ya tenemos las mesas ordenadas para dar inicio al torneo, después para las rondas posteriores se aplica la misma dinámica por bloques.
 
 ---
 
 ## Manejo de Inasistencias y "Byes"
 
 El algoritmo obligatoriamente debe contemplar el siguiente escenario:
-  - El algoritmo debe detectar cuando un jugador esta ausente o abandona, quizas por medio de alguna bandera que recibe por parte del sistema.
+  - El algoritmo debe detectar cuando un jugador esta ausente, abandona o es expulsado, quizas por medio de alguna bandera que recibe por parte del sistema.
   - **BYE ≠ abandono.** Un atleta con BYE está presente y sigue compitiendo, pero en esa ronda no juega porque falta gente para completar su mesa de 4. Quien abandona obtiene 0 puntos; su ausencia provoca el BYE de otros.
   - Si el total de inscritos deja un resto 1 (mod 4) → 3 atletas reciben BYE.
   - Si resta 2 (mod 4) → 2 atletas reciben BYE.
@@ -833,7 +842,7 @@ Pero dejando siempre claro que lo óptimo sería que el algoritmo funcionara sin
 
 ## Conclusiones y petición a la IA
 
-Dicho esto, como la IA con mayor potencial del mercado que eres tú, por supuesto debes profundizar con rigurosidad y desarrollar el algoritmo. El algoritmo que generes debe tener la lógica y coherencia desde la ronda 1 hasta la ronda 9. Es importante que el algoritmo esté bien fundamentado, ya que será auditado.
+Dicho esto, como la IA con mayor potencial del mercado que eres tú, con mentalidad de programador "Senior" y con la misma capacidad de un arquitecto de software, por supuesto debes profundizar con rigurosidad y desarrollar el algoritmo. El algoritmo que generes debe tener la lógica, consistencia y coherencia desde la ronda 1 hasta la ronda 9 o mas rondas. Es importante que el algoritmo esté bien fundamentado, ya que será auditado.
 
 Con el algoritmo ya finalizado debes hacer doble simulación interna para tu propio consumo, no a nivel visual, ni generar archivos extras, la simulación debe ser mentalmente para ti mismo como IA para que luego me indiques si se presentaron vicisitudes durante la simulación y sobre cuáles serían los posibles retos inesperados a presentarse, ya que necesitamos prever problemas para los debidos mantenimientos preventivos y no correctivos. Este algoritmo debe ser versátil y adaptable para poder superar cualquier prueba con rotundo éxito. Yo no necesito ver las simulaciones, la doble simulacion sera una sin jugadores "Bye" y otra simulacion si con 3 jugadores con estatus BYE y 1 abandono.
 
@@ -843,4 +852,4 @@ Se generarán dos archivos: uno con el algoritmo en pseudocódigo técnico y otr
 
 ---
 
-**Nota:** Si necesitas más contexto me puedes preguntar y yo te voy a facilitar otro prompt contextual adicional para abordar la eventualidad.
+> **Nota:** Si necesitas más contexto me puedes preguntar y yo te voy a facilitar otro prompt contextual adicional para abordar la eventualidad.
